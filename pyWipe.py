@@ -1,14 +1,13 @@
 #!/usr/bin/env python3 
 
-"""
-Python program for filling hard drives with either zeroes (0s) or ones (1s). 
-"""
+"""Python program for filling hard drives with either zeroes (0s),  or zeroes (0s) and ones (1s). Designed to work with POSIX compliant operating systems ONLY."""
 
-# Import OS functions 
+# Import OS functions. Module allows Python to interact with OS-dependent functions.  
+import os
 
 # Zeroes to the drive 
 
-# Pseudo-random stuff to the drive 
+# Zeroes and ones to the drive 
 
 # Check OS for POSIX
 
