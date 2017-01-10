@@ -1,6 +1,12 @@
-#!/usr/bin/env python 
+from builtins import input  # To handle input in Python 2 or Python3 
 
-"""Python program for filling hard drives with either zeros (0s),  or zeros (0s) and ones (1s). Designed and tested to work with POSIX-compliant Linux systems ONLY."""
+#!/usr/bin/env Python3 
+# Python 2 & 3 
+
+"""
+Python program for filling hard drive with either zeros (0s), or zeros (0s) and ones (1s). 
+Designed and tested to work with POSIX-compliant Linux systems ONLY.
+"""
 
 # Import Python module 
 
