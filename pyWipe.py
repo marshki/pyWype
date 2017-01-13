@@ -16,4 +16,11 @@ def user_float():
         except ValueError: 
             print('Bad value, try again.')
 
-user_float() 
+def osCheck():
+	''' Check if OS is UNIX-like. '''
+	if os.name =='posix': 
+		print('Let there be wipe!') 
+	else: 
+		print('NOT POSIX-compliant, can not proceed.')
+
+osCheck()
