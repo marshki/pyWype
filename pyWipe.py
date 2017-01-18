@@ -3,9 +3,11 @@ from builtins import input
 #!/usr/bin/env Python3
 # Python 2 & 3 
 
-''' Python program to fill storage device(s)  with either zeroes(0s), or a random pattern of zeroes(0s) and ones (1s). '''
+''' 
+Python program to fill storage device(s) with either zeros(0s), or a pseudrandom combination of zeros(0s) and ones (1s). 
+'''
 
-# Import os functions
+# Import os function to provide Python with operating system-dependent functionality
 import os
 
 def userFloat(): 
@@ -28,5 +30,7 @@ def zeroDisk():
     return os.system('dd if=/dev/zero')
 
 def randomDisk(): 
-    '''Fill disk with random sequence of zeros (0s) and (1s).'''
+'''Fill disk with random sequence of zeros (0s) and (1s).'''
     return os.system('dd if=/dev/random')
+
+
