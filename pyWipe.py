@@ -8,8 +8,8 @@ from builtins import input
 # Import os functions
 import os
 
-def user_float(): 
-    ''' Prompt user for input, accepting only valid input.'''
+def userFloat(): 
+    '''Prompt user for input, accepting only valid input.'''
     while True: 
         try: 
             return float(input('How many times would you like to wipe this device?: '))
@@ -17,10 +17,16 @@ def user_float():
             print('Bad value, try again.')
 
 def osCheck():
-	''' Check if OS is UNIX-like. '''
+	'''Check if OS is UNIX-like.'''
 	if os.name =='posix': 
-		print('Let there be wipe!') 
-	else: 
-		print('NOT POSIX-compliant, can not proceed.')
+        print('Proceed')
+    else: 
+        print('Halt')
 
-osCheck()
+def zeroDisk(): 
+    '''Fill disk with zeros (0s).'''
+    return os.system('dd if=/dev/zero')
+
+def randomDisk(): 
+    '''Fill disk with random sequence of zeros (0s) and (1s).'''
+    return os.system('dd if=/dev/random')
