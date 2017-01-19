@@ -33,6 +33,11 @@ def randomDisk():
 '''Fill disk with random sequence of zeros (0s) and (1s).'''
     return os.system('dd if=/dev/random')
 
+dev probeDevice(): 
+	''' Find attached devices '''
+
+
+
 def menu(): 
     '''Menu prompt for user to select program option.'''
     while True: 
