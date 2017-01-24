@@ -8,7 +8,7 @@ def zero():
     print ""
     os.system("/sbin/fdisk -l")
     print ""
-    print "Please choose a device to kill.  Remember if you want to"
+    print "Please choose a device to wipe. Remember if you want to"
     print "wipe the whole drive and not just a partition, you can"
     print "remove the number appended.  Example /dev/sdc1 becomes /dev/sdc ."
     print ""
@@ -31,7 +31,7 @@ def random():
     print ""
     os.system("/sbin/fdisk -l")
     print ""
-    print "Please choose a device to kill.  Remember if you want to"
+    print "Please choose a device to wipe. Remember if you want to"
     print "wipe the whole drive and not just a partition, you can"
     print "remove the number appended.  Example /dev/sdc1 becomes /dev/sdc ."
     print ""
