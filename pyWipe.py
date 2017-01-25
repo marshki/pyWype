@@ -10,6 +10,13 @@ Python program to fill storage device(s) with either zeros(0s), or a pseudorando
 # Import os function to provide Python with operating system-dependent functionality
 import os
 
+def osCheck():
+	'''Check if OS is UNIX-like.'''
+	if os.name =='posix': 
+        print('Proceed')
+    else: 
+        print('Halt')
+
 def userFloat(): 
     '''Prompt user for input, accepting only valid input.'''
     while True: 
@@ -17,13 +24,6 @@ def userFloat():
             return float(input('How many times would you like to wipe this device?: '))
         except ValueError: 
             print('Bad value, try again.')
-
-def osCheck():
-	'''Check if OS is UNIX-like.'''
-	if os.name =='posix': 
-        print('Proceed')
-    else: 
-        print('Halt')
 
 def zeroDisk(): 
     '''Fill disk with zeros (0s).'''
@@ -35,8 +35,6 @@ def randomDisk():
 
 dev probeDevice(): 
 	''' Find attached devices '''
-
-
 
 def menu(): 
     '''Menu prompt for user to select program option.'''
