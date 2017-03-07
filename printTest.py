@@ -2,16 +2,15 @@
 """ Python 2.7 disk wiping utility for use on Linux OS. """
 
 # Import Python module 
-""" os module provides a way of using operating system-dependent functions """
+# os module allows use of operating system-dependent functions 
 import os
 
 # 
 
 def listHardDrives():
-	""" """ 
-	return os.system('lsblk --nodeps --output NAME,MODEL,SIZE,STATE,VENDOR')	
-	
-    # lsblk -o        
+	""" List block devices """ 
+	return os.system('lsblk --nodeps --output NAME,MODEL,SIZE,STATE,VENDOR')    # lsblk -d -o NAME,MODEL,SIZE,STATE,VENDOR
+
 listHardDrives()
 
 #def selectDiskWipe()
