@@ -10,7 +10,13 @@ def listHardDrives():
 		"""
 	) 
 
+def selectDiskWipe()
 
+def numberWipes()
+
+def confirmWipe()
+
+def zeroDisk()
 
 
 
