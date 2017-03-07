@@ -5,13 +5,18 @@
 # os module allows use of operating system-dependent functions 
 import os
 
-# 
+# Define functions 
 
-def listHardDrives():
-	""" List block devices """ 
-	return os.system('lsblk --nodeps --output NAME,MODEL,SIZE,STATE,VENDOR')    # lsblk -d -o NAME,MODEL,SIZE,STATE,VENDOR
+def osName(): 
+    """ Get OS name """
+    return os.system('uname') 
 
-listHardDrives()
+def listBlockDevices():
+	""" List mounted block devices """ 
+	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
+
+osName()
+listBlockDevices()
 
 #def selectDiskWipe()
 
@@ -22,13 +27,3 @@ listHardDrives()
 #def zeroDisk()
 
 
-
-#print(
-#"""
-
-#Please choose a device to kill. 
-#Remember if you want wipe the whole drive and not just a partition,
-#you can remvoe the number appended. 
-
-#"""
-#)
