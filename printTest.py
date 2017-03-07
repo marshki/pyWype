@@ -5,7 +5,7 @@ import os
 
 def listHardDrives(): 
     return os.system("lsblk --output NAME,FSTYPE,LABEL,UUID,MODE")
-        
+    # lsblk -o        
 listHardDrives()
 
 #def selectDiskWipe()
