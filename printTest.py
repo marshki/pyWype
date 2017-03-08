@@ -7,24 +7,20 @@ import os
 
 # Define functions 
 
-def osName(): 
-    """ Get OS name """
-    return os.system('uname') 
+#def osName(): 
+#    """ Get OS name """
+#    return os.system('uname') 
 
-lin = osName()
-
-def osCheck():
-    """ Confirm Linux stautus """
-    return lin == 'Linux' 
+#def osCheck():
+#    """ Confirm Linux stautus """
+#    return lin == 'Linux' 
 
 
 def listBlockDevices():
 	""" List mounted block devices """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
-osName()
 listBlockDevices()
-osCheck()
 
 #def selectDiskWipe()
 
