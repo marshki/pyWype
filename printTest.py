@@ -22,14 +22,29 @@ def wipes():
     """ Prompt user for number of wipes to perform """ 
     while True: 
         try: 
-            numberWipes = int(raw_input('Type the number of times you want to wipe the disk, then press Enter: '))
+            numberWipes = int(raw_input('How many times do you want to wipe the disk?: '))
             return numberWipes
         except ValueError: 
             print "Sorry, that\'s not a valid number. Please try again."
 
+def confirm():
+    """ Prompt user to confirm wipe process """
+    while True: 
+        try: 
+            reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
+            if reply == 'yes': 
+                return True 
+            if reply == 'no': 
+                return False 
+        except ValueError: 
+            print "Sorry, that\'s not a valid entry. Please try again." 
+ 
 
 listBlockDevices()
+
 wipes()
+
+confirm()
 #def selectDiskWipe()
 
 #def numberWipes()
