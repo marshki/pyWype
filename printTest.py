@@ -1,5 +1,5 @@
 #!/bin/py 
-""" Python 2.7 disk wiping utility for use on Linux OS. """
+""" Python 2.7 disk wiping utility for use on Linux OSs. """
 
 # Import Python module 
 # os module allows use of operating system-dependent functions 
@@ -13,8 +13,6 @@ import os
 
 #def osCheck():
 #    """ Confirm Linux stautus """
-#    return lin == 'Linux' 
-
 
 def listBlockDevices():
 	""" List mounted block devices """ 
@@ -24,7 +22,7 @@ def wipes():
     """ Prompt user for number of wipes to perform """ 
     while True: 
         try: 
-            numberWipes = int(raw_input('Type the number of times you want to wipe the disk, then press Enter: ')
+            numberWipes = int(raw_input('Type the number of times you want to wipe the disk, then press Enter: '))
             return numberWipes
         except ValueError: 
             print "Sorry, that\'s not a valid number. Please try again."
