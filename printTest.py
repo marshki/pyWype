@@ -20,8 +20,18 @@ def listBlockDevices():
 	""" List mounted block devices """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
-listBlockDevices()
+def wipes(): 
+    """ Prompt user for number of wipes to perform """ 
+    while True: 
+        try: 
+            numberWipes = int(raw_input('Type the number of times you want to wipe the disk, then press Enter: ')
+            return numberWipes
+        except ValueError: 
+            print "Sorry, that\'s not a valid number. Please try again."
 
+
+listBlockDevices()
+wipes()
 #def selectDiskWipe()
 
 #def numberWipes()
