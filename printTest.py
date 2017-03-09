@@ -18,17 +18,17 @@ def listBlockDevices():
 	""" List mounted block devices """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
-def wipes(): 
+def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
     while True: 
         try: 
-            numberWipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            return numberWipes
+            passes = int(raw_input('How many times do you want to wipe the disk?: '))
+            return passes
         except ValueError: 
             print "Sorry, that\'s not a valid number. Please try again."
 
-def confirm():
-    """ Prompt user to confirm wipe process """
+def confirmWipe():
+    """ Prompt user to confirm number of wipes """
     while True: 
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
@@ -39,12 +39,18 @@ def confirm():
         except ValueError: 
             print "Sorry, that\'s not a valid entry. Please try again." 
  
+def zerosToDrive(): 
+    """ Write zeros to drive """
+    round=1
+    for int in range(wipes): 
+        os.system(("dd if=/dev/zero of =%s(device)) 
+        round+=1 
 
 listBlockDevices()
-
 wipes()
-
 confirm()
+
+
 #def selectDiskWipe()
 
 #def numberWipes()
