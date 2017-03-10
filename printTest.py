@@ -43,7 +43,7 @@ def zerosToDrive():
     """ Write zeros to drive """
     round=1
     for int in range(wipes): 
-        os.system(("dd if=/dev/zero of =%s(device)) 
+        os.system(("dd if=/dev/zero of =%s")%(device)) 
         round+=1 
 
 listBlockDevices()
