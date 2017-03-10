@@ -47,8 +47,8 @@ def zerosToDrive():
         round+=1 
 
 listBlockDevices()
-wipes()
-confirm()
+numberOfWipes()
+confirmWipe()
 
 
 #def selectDiskWipe()
