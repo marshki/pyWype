@@ -1,5 +1,8 @@
 #!/bin/py 
 """ Python 2.7 disk wiping utility for use on Linux OSs. """
+When you do a wipe (also sometimes called a secure delete), you are telling the operating system to not only update its file records, but also immediately overwrite the disk space with either zeros or random data, making it much harder to recover anything.
+
+
 
 # Import `os module` to allows for use of operating system-dependent functions 
 import os
@@ -19,7 +22,15 @@ def listBlockDevices():
 
 def defineBlockDevice(): 
     """ Prompt user to define block device """
+    while True: 
+       try: 
+            blockdevice = str(raw_input('Enter the block device you want to wipe: '))
+            return blockdevice  
+        except ValueError: 
+            print "Sorry, that\'s not a valid block device. Please try again."
 
+
+ 
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
     while True: 
@@ -41,6 +52,7 @@ def confirmWipe():
         except ValueError: 
             print "Sorry, that\'s not a valid entry. Please try again." 
  
+'''
 def zerosToDrive(): 
     """ Write zeros to drive """
     round=1
@@ -50,13 +62,13 @@ def zerosToDrive():
 
 def wipeDrive(): 
     """ Guts of the program """
-
+'''
 listBlockDevices()
 numberOfWipes()
 confirmWipe()
-
+'''
 if__name__ == '__main__': 
-
+'''
 
 
 #def selectDiskWipe()
