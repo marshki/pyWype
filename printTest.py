@@ -1,8 +1,7 @@
 #!/bin/py 
 """ Python 2.7 disk wiping utility for use on Linux OSs. """
 
-# Import Python module 
-# os module allows use of operating system-dependent functions 
+# Import `os module` to allows for use of operating system-dependent functions 
 import os
 
 # Define functions 
@@ -17,6 +16,9 @@ import os
 def listBlockDevices():
 	""" List mounted block devices """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
+
+def defineBlockDevice(): 
+    """ Prompt user to define block device """
 
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
@@ -45,6 +47,11 @@ def zerosToDrive():
     for int in range(wipes): 
         os.system(("dd if=/dev/zero of =%s")%(device)) 
         round+=1 
+
+def wipeDrive(): 
+    """ Guts of the program """
+
+if__name__ == '__main__': 
 
 listBlockDevices()
 numberOfWipes()
