@@ -51,11 +51,12 @@ def zerosToDrive():
 def wipeDrive(): 
     """ Guts of the program """
 
-if__name__ == '__main__': 
-
 listBlockDevices()
 numberOfWipes()
 confirmWipe()
+
+if__name__ == '__main__': 
+
 
 
 #def selectDiskWipe()
