@@ -1,11 +1,17 @@
 #!/bin/py 
-""" Python 2.7 disk wiping utility for use on Linux OSs. """
+
+"""
+Python 2.7 disk wiping utility for use on Linux OSs. 
 When you do a wipe (also sometimes called a secure delete), you are telling the operating system to not only update its file records, but also immediately overwrite the disk space with either zeros or random data, making it much harder to recover anything.
-
-
+"""
+# Import Python modules 
 
 # Import `os module` to allows for use of operating system-dependent functions 
 import os
+
+# Import `re module` for regular expression parsing 
+import re  
+
 
 # Define functions 
 
@@ -28,7 +34,6 @@ def defineBlockDevice():
             return blockdevice  
         except ValueError: 
             print "Sorry, that\'s not a valid block device. Please try again."
-
 
  
 def numberOfWipes(): 
