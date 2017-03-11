@@ -35,6 +35,14 @@ def defineBlockDevice():
         except ValueError: 
             print "Sorry, that\'s not a valid block device. Please try again."
 
+"""
+
+input_str = raw_input("block device: ")
+if not re.match("^[a-z]*$", input_str):
+    print "Error! Only letters a-z allowed!"
+    sys.exit()
+"""
+
  
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
