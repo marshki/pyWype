@@ -28,8 +28,8 @@ def listBlockDevices():
 
 def defineBlockDevice(): 
     """ Prompt user to define block device """
-    while True: 
-       try: 
+    while True:
+        try: 
             blockdevice = str(raw_input('Enter the block device you want to wipe: '))
             return blockdevice  
         except ValueError: 
@@ -57,8 +57,7 @@ def numberOfWipes():
     """ Prompt user for number of wipes to perform """ 
     while True: 
         try: 
-            passes = int(raw_input('How many times do you want to wipe the disk?: '))
-            return passes
+            return int(raw_input('How many times do you want to wipe the disk?: '))
         except ValueError: 
             print "Sorry, that\'s not a valid number. Please try again."
 
