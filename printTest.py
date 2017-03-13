@@ -37,8 +37,16 @@ def defineBlockDevice():
 
 """
 This needs fixing!!!
-
-input_str = raw_input("block device: ")
+""" 
+def stingCheck(): 
+    """ ABC check """ 
+    while True: 
+        try 
+            stringy = raw_input("block device: ")
+            return stringy 
+    except ValueError:
+        print "Sorry, that\'s not a valid character." 
+"""
 if not re.match("^[a-z]*$", input_str):
     print "Error! Only letters a-z allowed!"
     break     
