@@ -58,7 +58,7 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            if not number > 0: 
+            if not wipes > 0: 
                 raise ValueError()
             return wipes 
         except ValueError: 
