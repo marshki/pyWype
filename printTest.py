@@ -30,28 +30,12 @@ def defineBlockDevice():
     """ Prompt user to define block device """
     while True:
         try: 
-            blockdevice = str(raw_input('Enter the block device you want to wipe: '))
-            return blockdevice  
+            blockdevice = str(raw_input('Enter the letter of the block device you want to wipe: '))
+            if not re.match("^[a-z]*$", stringy): 
+                raise ValueError()
+            return stringy 
         except ValueError: 
             print "Sorry, that\'s not a valid block device. Please try again."
-
-"""
-This needs fixing!!!
-""" 
-def stingCheck(): 
-    """ ABC check """ 
-    while True: 
-        try 
-            stringy = raw_input("block device: ")
-            return stringy 
-    except ValueError:
-        print "Sorry, that\'s not a valid character." 
-"""
-if not re.match("^[a-z]*$", input_str):
-    print "Error! Only letters a-z allowed!"
-    break     
-"""
-
  
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
