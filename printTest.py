@@ -56,10 +56,13 @@ if not re.match("^[a-z]*$", input_str):
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
     while True: 
-        try: 
-            return int(raw_input('How many times do you want to wipe the disk?: '))
+        try:
+            wipes = int(raw_input('How many times do you want to wipe the disk?: '))
+            if not number > 0: 
+                raise ValueError()
+            return wipes 
         except ValueError: 
-            print "Sorry, that\'s not a valid number. Please try again."
+            print "Sorry, that\'s not a valid entry. Please try again."
 
 def confirmWipe():
     """ Prompt user to confirm number of wipes """
