@@ -79,12 +79,3 @@ if__name__ == '__main__':
 '''
 
 
-#def selectDiskWipe()
-
-#def numberWipes()
-
-#def confirmWipe()
-
-#def zeroDisk()
-
-
