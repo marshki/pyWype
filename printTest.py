@@ -31,7 +31,7 @@ def defineBlockDevice():
     while True:
         try: 
             blockdevice = str(raw_input('Enter the letter of the block device you want to wipe: '))
-            if not re.match("^[a-z]*$", stringy): 
+            if not re.match("^[a-z]*$", stringy):                       # this should limit input to string length of 1
                 raise ValueError()
             return stringy 
         except ValueError: 
