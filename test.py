@@ -1,17 +1,17 @@
 #!/bin/py 
+
 import re 
 
 def stringCheck():                                                                                                                     
     """ ABC check """                                                                                                                 
     while True:                                                                                                                     
-        try: 
-            stringy = raw_input("block device: ")                                                                                     
-            return stringy                                                                                                            
+        try:
+            stringy =  str(raw_input("Enter block device: ")) 
+            if not re.match("^[a-z]*$", stringy):                    
+                raise ValueError()
+            return stringy 
         except ValueError:
-            print "Sorry, that\'s not a valid character."  
+            print "Sorry, that\'s not a valid entry. Please try again."  
 
+stringCheck()
 
-stringCheck()
-stringCheck()
-stringCheck()
-stringCheck()
