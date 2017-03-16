@@ -15,8 +15,6 @@ import os
 # Import `re module` for regular expression parsing 
 import re  
 
-
-
 # Define functions 
 
 #def osName(): 
@@ -68,8 +66,8 @@ def confirmWipe():
 def zerosToDrive(): 
     """ Write zeros to drive """
     round=1
-    for int in range(wipes): 
-        os.system(("dd if=/dev/zero of =%s")%(device)) 
+    for int in range(numberOfWipes): 
+        os.system(("dd if=/dev/zero of =%s")%(defineBlockDevice)) 
         round+=1 
 
 def wipeDrive(): 
