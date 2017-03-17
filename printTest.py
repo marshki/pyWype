@@ -62,13 +62,12 @@ def confirmWipe():
         except ValueError: 
             print "Sorry, that\'s not a valid entry. Please try again." 
  
-'''
 def zerosToDrive(): 
     """ Write zeros to drive """
-    round=1
+    wipes = 1
     for int in range(numberOfWipes): 
-        os.system(("dd if=/dev/zero of =%s")%(defineBlockDevice)) 
-        round+=1 
+        os.system(("dd if=/dev/zero of =/dev/null")) 
+        wipes+=1 
 
 def wipeDrive(): 
     """ Guts of the program """
