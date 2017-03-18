@@ -56,7 +56,7 @@ def confirmWipe():
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
             if reply == 'yes': 
-                continue            
+                return True              
             elif reply == 'no': 
                 break 
         except ValueError: 
