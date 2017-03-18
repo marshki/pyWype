@@ -56,28 +56,28 @@ def confirmWipe():
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
             if reply == 'yes': 
-                return True 
-            if reply == 'no': 
-                return False 
+                continue            
+            elif reply == 'no': 
+                break 
         except ValueError: 
             print "Sorry, that\'s not a valid entry. Please try again." 
- 
+""" 
 def zerosToDrive(): 
-    """ Write zeros to drive """
+     Write zeros to drive 
     wipes = 1
     for int in range(numberOfWipes): 
         os.system(("dd if=/dev/zero of =/dev/null")) 
         wipes+=1 
 
 def wipeDrive(): 
-    """ Guts of the program """
-'''
+     Guts of the program 
+"""
 listBlockDevices()
 defineBlockDevice()
 numberOfWipes()
 confirmWipe()
+
 '''
 if__name__ == '__main__': 
 '''
-
 
