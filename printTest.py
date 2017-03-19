@@ -17,7 +17,7 @@ import re
 # Define functions 
 
 def osName(): 
-    """ Get OS name """
+    """ Get operating system name """
     return os.system('uname') 
 
 #def osCheck():
@@ -62,12 +62,14 @@ def confirmWipe():
             print "Sorry, that\'s not a valid entry. Please try again." 
 """ 
 def zerosToDrive(): 
-     Write zeros to drive 
+    'Write zeros to drive' 
     wipes = 1
     for int in range(numberOfWipes): 
-        os.system(("dd if=/dev/zero of =/dev/null")) 
+        os.system(("dd if=/dev/zero | pv | dd of =/dev/null")) 
         wipes+=1 
+"""
 
+""" 
 def wipeDrive(): 
      Guts of the program 
 """
@@ -76,7 +78,6 @@ listBlockDevices()
 defineBlockDevice()
 numberOfWipes()
 confirmWipe()
-
 '''
 if__name__ == '__main__': 
 '''
