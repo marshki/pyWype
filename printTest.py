@@ -2,7 +2,6 @@
 
 """
 Python 2.7 disk wiping utility for use on Linux OSs. 
-When you do a wipe (also sometimes called a secure delete), you are telling the operating system to not only update its file records, but also immediately overwrite the disk space with either zeros or random data, making it much harder to recover anything.
 """
 
 # Need to do Python dependency check here
@@ -17,9 +16,9 @@ import re
 
 # Define functions 
 
-#def osName(): 
-#    """ Get OS name """
-#    return os.system('uname') 
+def osName(): 
+    """ Get OS name """
+    return os.system('uname') 
 
 #def osCheck():
 #    """ Confirm Linux stautus """
@@ -72,6 +71,7 @@ def zerosToDrive():
 def wipeDrive(): 
      Guts of the program 
 """
+osName()
 listBlockDevices()
 defineBlockDevice()
 numberOfWipes()
