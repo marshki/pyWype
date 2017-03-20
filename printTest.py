@@ -11,7 +11,7 @@ Python 2.7 disk wiping utility for use on Linux OSs.
 # Import `os module` to allows for use of operating system-dependent functions 
 import os
 
-# Import `re module` for regular expression parsing 
+Import `re module` for regular expression parsing 
 import re  
 
 # Define functions 
@@ -60,14 +60,13 @@ def confirmWipe():
                 break 
         except ValueError: 
             print "Sorry, that\'s not a valid entry. Please try again." 
-""" 
+ 
 def zerosToDrive(): 
-    'Write zeros to drive' 
+    """ Write zeros to drive """ 
     wipes = 1
     for int in range(numberOfWipes): 
-        os.system(("dd if=/dev/zero | pv | dd of =/dev/null")) 
+        os.system(("dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb         
         wipes+=1 
-"""
 
 """ 
 def wipeDrive(): 
