@@ -11,13 +11,13 @@ Python 2.7 disk wiping utility for use on Linux OSs.
 # Import `os module` to allows for use of operating system-dependent functions 
 import os
 
-Import `re module` for regular expression parsing 
+# Import `re module` for regular expression parsing 
 import re  
 
 # Define functions 
 
 def osName(): 
-    """ Get operating system name """
+    """ Retrieve  operating system name """
     return os.system('uname') 
 
 #def osCheck():
@@ -77,6 +77,7 @@ listBlockDevices()
 defineBlockDevice()
 numberOfWipes()
 confirmWipe()
+zerosToDrive()
 '''
 if__name__ == '__main__': 
 '''
