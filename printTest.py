@@ -68,6 +68,13 @@ def zerosToDrive():
         os.system(("dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb         
         wipes+=1 
 
+def randomToDrive():
+    """ Write random zeros and ones to drive """
+    wipes = 1 
+    for int in range(1):#(numberOfWipes):
+        os.system(("dd if=/dev/random |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb 
+        wipes+=1 
+
 """ 
 def wipeDrive(): 
      Guts of the program 
