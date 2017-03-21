@@ -64,7 +64,7 @@ def confirmWipe():
 def zerosToDrive(): 
     """ Write zeros to drive """ 
     wipes = 1
-    for int in range(numberOfWipes): 
+    for int in range(1):#(numberOfWipes): 
         os.system(("dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb         
         wipes+=1 
 
