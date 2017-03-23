@@ -1,20 +1,14 @@
 #!/bin/py 
 
-"""
-Python 2.7 disk wiping utility for use on Linux OSs. 
-"""
+""" Python 2.7 disk wiping utility for use on Linux OSs. """
 
-# Need to do Python dependency check here
+# Do we need to do a Python dependency check here? 
 
-# Import Python modules 
+""" Import Python modules """
+import os           # `os module` allows for use of operating system-dependent functions 
+import re           # `re module` for regular expression parsing  
 
-# Import `os module` to allows for use of operating system-dependent functions 
-import os
-
-# Import `re module` for regular expression parsing 
-import re  
-
-# Define functions 
+""" Define functions """
 
 def osName(): 
     """ Retrieve  operating system name """
@@ -85,6 +79,7 @@ defineBlockDevice()
 numberOfWipes()
 confirmWipe()
 zerosToDrive()
+randomToDrive()
 '''
 if__name__ == '__main__': 
 '''
