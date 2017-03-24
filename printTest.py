@@ -6,7 +6,7 @@
 
 """ Import Python modules """
 import os           # `os module` allows for use of operating system-dependent functions 
-import re           # `re module` for regular expression parsing  
+import re           # `re module` allows for regular expression parsing  
 
 """ Define functions """
 
@@ -30,7 +30,7 @@ def defineBlockDevice():
                 raise ValueError()
             return blockdevice
         except ValueError: 
-            print "Sorry, that\'s not a valid block device. Please try again."
+            print 'Sorry, that\'s not a valid block device. Please try again.'
  
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
@@ -41,7 +41,7 @@ def numberOfWipes():
                 raise ValueError()
             return wipes 
         except ValueError: 
-            print "Sorry, that\'s not a valid number. Please try again."
+            print 'Sorry, that\'s not a valid number. Please try again.'
 
 def confirmWipe():
     """ Prompt user to confirm number of wipes """
@@ -53,14 +53,17 @@ def confirmWipe():
             elif reply == 'no': 
                 break 
         except ValueError: 
-            print "Sorry, that\'s not a valid entry. Please try again." 
+            print 'Sorry, that\'s not a valid entry. Please try again.' 
  
 def zerosToDrive(): 
     """ Write zeros to drive """ 
-    wipes = 1
-    for int in range(1):#(numberOfWipes): 
-        os.system(("dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb         
-        wipes+=1 
+    num = numberOfWipes()
+
+    passes = 1 
+    for int in range(num):
+        print 'Processing pass count %s of %d ..."%(passes, num)'
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb         
+        passes+=1 
 
 def randomToDrive():
     """ Write random zeros and ones to drive """
