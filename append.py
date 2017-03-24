@@ -18,7 +18,6 @@ def appendBlockDevice():
     letter = defineBlockDevice()
     return '/dev/sd' + letter
 
-# blockdevice = blockdevice + "a"
 appendBlockDevice()
 
 
