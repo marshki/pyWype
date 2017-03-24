@@ -32,6 +32,13 @@ def defineBlockDevice():
         except ValueError: 
             print 'Sorry, that\'s not a valid block device. Please try again.'
  
+"""
+def appendBlockDevice(): 
+    """ Append user-defined block device to /dev/sd"""
+"""
+
+
+
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
     while True: 
