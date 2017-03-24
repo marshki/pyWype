@@ -18,10 +18,10 @@ def zerosToDrive():
     """ Write zeros to drive """
     num = numberOfWipes()
     
-    wipes = 1
+    passes = 1
     for int in range(num):
-        print "Processing wipe count %s of %d ..."%(wipes, num) 
+        print "Processing pass count %s of %d ..."%(passes, num) 
         os.system(("dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096")) # pv -ptrb         
-        wipes+=1
+        passes+=1
 
 zerosToDrive()
