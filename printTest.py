@@ -15,7 +15,7 @@ def osName():
     return os.system('uname') 
 
 #def osCheck():
-#    """ Confirm Linux stautus """
+#    """  Confirm Linux stautus """
 
 def listBlockDevices():
 	""" List mounted block devices """ 
@@ -34,7 +34,7 @@ def defineBlockDevice():
  
 def appendBlockDevice(): 
     """ Append user-defined block device to /dev/sd """
-    letter = definedBlockDevice()
+    letter = defineBlockDevice()
     return '/dev/sd' + letter 
 
 def numberOfWipes(): 
@@ -42,8 +42,8 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            if not wipes > 0: 
-                raise ValueError()
+            #if not wipes > 0: 
+            #    raise ValueError()
             return wipes 
         except ValueError: 
             print 'Sorry, that\'s not a valid number. Please try again.'
@@ -80,18 +80,23 @@ def randomToDrive():
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb 
         passes+=1 
 
-""" 
-def wipeDrive(): 
-     Guts of the program 
-"""
-osName()
-listBlockDevices()
-defineBlockDevice()
-# numberOfWipes()
-confirmWipe()
-zerosToDrive()
-randomToDrive()
-'''
-if__name__ == '__main__': 
-'''
+def wipeDrive():
+    """ Guts of the program """ 
+
+    os = osName()
+    show = listBlockDevices()
+    device = appendBlockDevice()  
+    proceed = confirmWipe() 
+    zero = zerosToDrive()
+
+#osName()
+#listBlockDevices()
+#defineBlockDevice()
+#numberOfWipes()
+#confirmWipe()
+#zerosToDrive()
+#randomToDrive()
+
+if __name__ == '__main__': 
+    wipeDrive()
 
