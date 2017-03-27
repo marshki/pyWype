@@ -5,6 +5,7 @@
 ### Do we need to do a Python dependency check here? ###
 
 """ Import Python modules """
+
 import os           # `os module` allows for use of operating system-dependent functions 
 import re           # `re module` allows for regular expression parsing  
 
@@ -95,7 +96,7 @@ def randomToDrive():
         passes += 1 
 
 def wipeDrive():
-    """ Guts of the program """ 
+    """ Prorgram to Wipe drive """ 
 
     os = osName()
     device = appendBlockDevice()  
@@ -103,4 +104,3 @@ def wipeDrive():
 
 if __name__ == '__main__': 
     wipeDrive()
-
