@@ -12,8 +12,16 @@ The idea here is to enhance the program in Python 2.7 first, then add support fo
 Still early in development. **PROCEED WITH CAUTION**
 
 TODO: 
-- [ ] Detect attached devices 
-- [ ] Raw 
-- [ ] Refined 
-- [ ] From future import 
-- [ ] Unit testing  
+- [x] Detect attached devices 
+- [x] Define block device(s) to be wiped  
+- [x] Define number of wipes 
+- [x] Confirm wipe 
+- [x] Zeros to drive 
+- [x] Random to drive 
+- [x] Wipe drive 
+- [ ] Unit tests 
+- [ ] Python 2 & 3 
+- [ ] Menu 
+- [ ] Argument parsing for CLI action 
+- [ ] Investigate various wiping algorithms 
+- [ ] More stuff I can't think of ATM 
