@@ -1,4 +1,4 @@
-#!/bin/py 
+#!/usr/bin/env python  
 
 """ Python 2.7 disk wiping utility for use on Linux operating systems. """
 
@@ -37,11 +37,14 @@ def defineBlockDevice():
  
 def appendBlockDevice(): 
     """ Append user-defined block device to /dev/sd """
+    
     letter = defineBlockDevice()
+    
     return '/dev/sd' + letter 
 
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
+    
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
@@ -54,6 +57,7 @@ def numberOfWipes():
 
 def confirmWipe():
     """ Prompt user to confirm number of wipes """
+    
     while True: 
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
@@ -66,9 +70,11 @@ def confirmWipe():
  
 def zerosToDrive(): 
     """ Write zeros to drive """ 
+    
     num = numberOfWipes()
 
     passes = 1 
+    
     for int in range(num):
         print 'Processing pass count %s of %d ... '%(passes, num)
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb         
@@ -76,9 +82,11 @@ def zerosToDrive():
 
 def randomToDrive():
     """ Write random zeros and ones to drive """
+    
     num = numberOfWipes()
 
     passes = 1 
+    
     for int in range(num):
         print 'Processing pass count %s of %d ...'%(passes, num)
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb 
@@ -91,14 +99,6 @@ def wipeDrive():
     device = appendBlockDevice()  
     proceed = confirmWipe() 
     zero = zerosToDrive()
-
-#osName()
-#listBlockDevices()
-#defineBlockDevice()
-#numberOfWipes()
-#confirmWipe()
-#zerosToDrive()
-#randomToDrive()
 
 if __name__ == '__main__': 
     wipeDrive()
