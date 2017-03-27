@@ -72,6 +72,7 @@ def zerosToDrive():
     """ Write zeros to drive """ 
     
     num = numberOfWipes()
+    confirm = confirmWipe()
 
     passes = 1 
     
@@ -84,6 +85,7 @@ def randomToDrive():
     """ Write random zeros and ones to drive """
     
     num = numberOfWipes()
+    confirm = confirmWipe()
 
     passes = 1 
     
@@ -97,7 +99,6 @@ def wipeDrive():
 
     os = osName()
     device = appendBlockDevice()  
-    proceed = confirmWipe() 
     zero = zerosToDrive()
 
 if __name__ == '__main__': 
