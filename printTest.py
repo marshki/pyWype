@@ -79,7 +79,7 @@ def zerosToDrive():
     for int in range(num):
         print 'Processing pass count %s of %d ... '%(passes, num)
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb         
-        passes+=1 
+        passes += 1 
 
 def randomToDrive():
     """ Write random zeros and ones to drive """
@@ -92,7 +92,7 @@ def randomToDrive():
     for int in range(num):
         print 'Processing pass count %s of %d ...'%(passes, num)
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb 
-        passes+=1 
+        passes += 1 
 
 def wipeDrive():
     """ Guts of the program """ 
