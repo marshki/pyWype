@@ -2,7 +2,7 @@
 
 """ Python 2.7 disk wiping utility for use on Linux operating systems. """
 
-# Do we need to do a Python dependency check here? 
+### Do we need to do a Python dependency check here? ###
 
 """ Import Python modules """
 import os           # `os module` allows for use of operating system-dependent functions 
@@ -23,6 +23,9 @@ def listBlockDevices():
 
 def defineBlockDevice(): 
     """ Prompt user to define block device """
+    
+    devices = listBlockDevices() 
+
     while True:
         try: 
             blockdevice = str(raw_input('Enter the letter of the block device you want to wipe: '))
@@ -42,6 +45,7 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
+            ### Comments for testing to allow for zero wipes; need to remove  
             #if not wipes > 0: 
             #    raise ValueError()
             return wipes 
@@ -84,7 +88,6 @@ def wipeDrive():
     """ Guts of the program """ 
 
     os = osName()
-    show = listBlockDevices()
     device = appendBlockDevice()  
     proceed = confirmWipe() 
     zero = zerosToDrive()
