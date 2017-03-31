@@ -49,12 +49,16 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            ### Comments for testing to allow for zero wipes; need to remove  
+            ### Comments for testing to allow for zero wipes; need to remove ### 
             #if not wipes > 0: 
             #    raise ValueError()
             return wipes 
         except ValueError: 
             print 'Sorry, that\'s not a valid number. Please try again.'
+
+def warningMessage(): 
+    print "Writing changes to disk. All data on %s will be lost."(device)"
+
 
 def confirmWipe():
     """ Prompt user to confirm number of wipes """
