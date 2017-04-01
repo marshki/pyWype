@@ -1,19 +1,16 @@
 #!/usr/bin/env python 
 
-import os 
-from sys import platform 
+import sys 
 
-def osName(): 
-    """ Retrieve operating system name """
-    return os.system('uname') # o 
 
 def osCheck(): 
-    # from sys import platform
-    if platform == "linux" or platform == "linux2":
-        print 'linux'
-    elif platform == "darwin":
-        print 'OS X'
-    elif platform == "win32":
-        print 'Windows'
-       
+    """ Check if system is running 'Linux' """
+    return sys.platform.startswith('linux')
+    
+def isLinux(): 
+    os = osCheck()
+    print os 
+ 
+
 osCheck()
+isLinux()
