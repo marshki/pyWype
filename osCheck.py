@@ -5,12 +5,10 @@ import sys
 
 def osCheck(): 
     """ Check if system is running 'Linux' """
-    return sys.platform.startswith('linux')
-    
-def isLinux(): 
-    os = osCheck()
-    print os 
- 
+    if not sys.platform.startswith('linux'): 
+        print 'Sorry, we can\'t continue. Ciao' 
+        exit()
 
 osCheck()
-isLinux()
+
+
