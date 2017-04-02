@@ -6,17 +6,17 @@
 
 """ Import Python modules """
 
+import sys          # `sys module` allows for use of variables used by the interpreter and associated functions 
 import os           # `os module` allows for use of operating system-dependent functions 
 import re           # `re module` allows for regular expression parsing  
 
 """ Define functions """
 
-def osName(): 
-    """ Retrieve operating system name """
-    return os.system('uname') 
-
-#def osCheck():
-#    """  Confirm Linux stautus """
+def osCheck():
+    """  Check if OS is 'linux' """
+    if not sys.platform.startswith('linux'): 
+        print 'Sorry, this program must be run on a Linux OS. Program exiting.' 
+        exit()
 
 def listBlockDevices():
 	""" List mounted block devices """ 
@@ -56,8 +56,8 @@ def numberOfWipes():
         except ValueError: 
             print 'Sorry, that\'s not a valid number. Please try again.'
 
-def warningMessage(): 
-    print "Writing changes to disk. All data on %s will be lost."(device)"
+#def warningMessage(): 
+#    print Writing changes to disk. All data on %s will be lost.(device) 
 
 
 def confirmWipe():
@@ -101,8 +101,8 @@ def randomToDrive():
 
 def wipeDrive():
     """ Prorgram to Wipe drive """ 
-
-    os = osName()
+    
+    osCheck()
     device = appendBlockDevice()  
     zero = zerosToDrive()
 
