@@ -6,16 +6,16 @@
 
 """ Import Python modules """
 
-import sys          # `sys module` allows for use of variables used by the interpreter and associated functions 
-import os           # `os module` allows for use of operating system-dependent functions 
-import re           # `re module` allows for regular expression parsing  
+import sys              # `sys module` allows for use of variables used by the interpreter and associated functions 
+import os               # `os module` allows for use of operating system-dependent functions 
+import re               # `re module` allows for regular expression parsing  
 
 """ Define functions """
 
 def osCheck():
     """  Check if OS is 'linux' """
     if not sys.platform.startswith('linux'): 
-        print 'Sorry, this program must be run on a Linux OS. Program exiting.' 
+        print 'Sorry, this program must be run on a Linux operating system. Exiting.' 
         exit()
 
 def listBlockDevices():
@@ -29,7 +29,8 @@ def defineBlockDevice():
 
     while True:
         try: 
-            blockdevice = str(raw_input('Enter the letter of the block device you want to wipe: '))
+            blockdevice = str(raw_input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+
             if not re.match("^[a-z]$", blockdevice):                                       
                 raise ValueError()
             return blockdevice
