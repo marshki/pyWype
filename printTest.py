@@ -2,8 +2,6 @@
 
 """ Python 2.7 disk wiping utility for use on Linux operating systems. """
 
-### Do we need to do a Python dependency check here? ###
-
 """ Import Python modules """
 
 import sys              # `sys module` allows for use of variables used by the interpreter and associated functions 
@@ -13,10 +11,10 @@ import re               # `re module` allows for regular expression parsing
 """ Define functions """
 
 def osCheck():
-    """  Check if OS is 'linux' """
+    """  Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'): 
-        print 'Sorry, this program requries a Linux operating system. Exiting.' 
-        exit()
+        print 'Sorry, this program was designed for Linux. Exiting.' 
+        sys.exit()
 
 def listBlockDevices():
 	""" List mounted block devices """ 
@@ -69,8 +67,10 @@ def confirmWipe():
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
             if reply == 'yes': 
                 return True              
-            elif reply == 'no': 
-                break 
+            elif reply == 'no':
+                sys.exit()
+                 
+                
         except ValueError: 
             print 'Sorry, that\'s not a valid entry. Please try again.' 
  
@@ -105,7 +105,7 @@ def wipeDrive():
     
     osCheck()
     device = appendBlockDevice()  
-    warningMessage()
+    # warningMessage()
     zero = zerosToDrive()
 
 if __name__ == '__main__': 
