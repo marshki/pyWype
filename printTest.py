@@ -15,7 +15,7 @@ import re               # `re module` allows for regular expression parsing
 def osCheck():
     """  Check if OS is 'linux' """
     if not sys.platform.startswith('linux'): 
-        print 'Sorry, this program must be run on a Linux operating system. Exiting.' 
+        print 'Sorry, this program requries a Linux operating system. Exiting.' 
         exit()
 
 def listBlockDevices():
@@ -57,8 +57,8 @@ def numberOfWipes():
         except ValueError: 
             print 'Sorry, that\'s not a valid number. Please try again.'
 
-#def warningMessage(): 
-#    print Writing changes to disk. All data on %s will be lost.(device) 
+def warningMessage(): 
+    print 'Writing changes to disk. All data on %s will be lost.'%(device) 
 
 
 def confirmWipe():
@@ -105,6 +105,7 @@ def wipeDrive():
     
     osCheck()
     device = appendBlockDevice()  
+    warningMessage()
     zero = zerosToDrive()
 
 if __name__ == '__main__': 
