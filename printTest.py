@@ -32,6 +32,7 @@ def defineBlockDevice():
             if not re.match("^[a-z]$", blockdevice):                                       
                 raise ValueError()
             return blockdevice
+
         except ValueError: 
             print 'Sorry, that\'s not a valid block device. Try again.'
  
@@ -48,10 +49,11 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            ### Comments for testing to allow for zero wipes; need to remove ### 
-            #if not wipes > 0: 
-            #    raise ValueError()
+            ### Comment out lines 53, 53 below for testing ### 
+            if not wipes > 0: 
+                raise ValueError()
             return wipes 
+
         except ValueError: 
             print 'Sorry, that\'s not a valid number. Try again.'
 
@@ -130,8 +132,6 @@ def wipeDrive():
     
     osCheck()
     interactiveMode()
-    # device = appendBlockDevice()  
-    # zero = zerosToDrive()
     
 if __name__ == '__main__': 
     wipeDrive()
