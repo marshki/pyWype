@@ -33,7 +33,7 @@ def defineBlockDevice():
                 raise ValueError()
             return blockdevice
         except ValueError: 
-            print 'Sorry, that\'s not a valid block device. Please try again.'
+            print 'Sorry, that\'s not a valid block device. Try again.'
  
 def appendBlockDevice(): 
     """ Append user-defined block device to /dev/sd """
@@ -53,16 +53,17 @@ def numberOfWipes():
             #    raise ValueError()
             return wipes 
         except ValueError: 
-            print 'Sorry, that\'s not a valid number. Please try again.'
+            print 'Sorry, that\'s not a valid number. Try again.'
 
 def warningMessage(): 
-    device = appendBlockDevice()
-    print 'WARNING! You are about to write changes to a disk. All data on %s will be lost.'%(device) 
+    print 'WARNING! WRITING CHANGES TO DISK: ALL DATA WILL BE LOST.' 
 
 
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
     
+    warning = warningMessage()
+
     while True: 
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
@@ -72,7 +73,7 @@ def confirmWipe():
                 sys.exit()
                  
         except ValueError: 
-            print 'Sorry, that\'s not a valid entry. Please try again.' 
+            print 'Sorry, that\'s not a valid entry. Try again.' 
  
 def zerosToDrive(): 
     """ Write zeros to drive """ 
