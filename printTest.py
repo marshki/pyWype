@@ -11,13 +11,13 @@ import re               # `re module` allows for regular expression parsing
 """ Define functions """
 
 def osCheck():
-    """  Check if OS is 'Linux'. If not, exit. """
+    """  Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'): 
         print 'Sorry, this program was designed for Linux. Exiting.' 
         sys.exit()
 
 def listBlockDevices():
-	""" List mounted block devices """ 
+	""" List mounted block device(s) """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
 def defineBlockDevice(): 
@@ -56,7 +56,7 @@ def numberOfWipes():
             print 'Sorry, that\'s not a valid number. Try again.'
 
 def warningMessage(): 
-    print 'WARNING! WRITING CHANGES TO DISK: ALL DATA WILL BE LOST.' 
+    print 'WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.' 
 
 
 def confirmWipe():
