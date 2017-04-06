@@ -49,7 +49,7 @@ def numberOfWipes():
     while True: 
         try:
             wipes = int(raw_input('How many times do you want to wipe the disk?: '))
-            ### Comment out lines 53, 53 below for testing ### 
+            
             if not wipes > 0: 
                 raise ValueError()
             return wipes 
@@ -112,6 +112,7 @@ def menu():
         print '3. I want to quit.' 
         print '' 
         choice = raw_input('Select an option (1, 2 or 3): ')
+
         if choice in ('1', '2', '3'): 
             return choice 
 
@@ -119,6 +120,7 @@ def interactiveMode():
     """ Display menu-driven options and return conversions. """
     while True: 
         choice = menu() 
+
         if choice == '3': 
             sys.exit() 
         elif choice == '1': 
