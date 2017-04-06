@@ -112,6 +112,17 @@ def menu():
         if choice in ('1', '2', '3'): 
             return choice 
 
+def interactiveMode(): 
+    """ Display menu-driven options and return conversions. """
+    while True: 
+        choice = menu(): 
+        if choice == '3': 
+            sys.exit() 
+        elif choice == '1': 
+            print 'zero wipe'
+        elif choice == '2': 
+            print 'random wipe'
+   
 
 def wipeDrive():
     """ Prorgram to Wipe drive """ 
@@ -121,6 +132,5 @@ def wipeDrive():
     zero = zerosToDrive()
     
 
-    menu()
 if __name__ == '__main__': 
     wipeDrive()
