@@ -58,7 +58,6 @@ def numberOfWipes():
 def warningMessage(): 
     print 'WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.' 
 
-
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
     
@@ -76,8 +75,9 @@ def confirmWipe():
             print 'Sorry, that\'s not a valid entry. Try again.' 
  
 def zerosToDrive(): 
-    """ Write zeros to drive """ 
-    
+    """ Write zeros to drive """
+ 
+    append = appendBlockDevice() 
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -91,6 +91,7 @@ def zerosToDrive():
 def randomToDrive():
     """ Write random zeros and ones to drive """
     
+    append = appendBlockDevice()    
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -115,22 +116,22 @@ def menu():
 def interactiveMode(): 
     """ Display menu-driven options and return conversions. """
     while True: 
-        choice = menu(): 
+        choice = menu() 
         if choice == '3': 
             sys.exit() 
         elif choice == '1': 
-            print 'zero wipe'
+            zerosToDrive()
         elif choice == '2': 
-            print 'random wipe'
+            randomToDrive()
    
 
 def wipeDrive():
     """ Prorgram to Wipe drive """ 
     
     osCheck()
-    device = appendBlockDevice()  
-    zero = zerosToDrive()
+    interactiveMode()
+    # device = appendBlockDevice()  
+    # zero = zerosToDrive()
     
-
 if __name__ == '__main__': 
     wipeDrive()
