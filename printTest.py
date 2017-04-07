@@ -4,15 +4,15 @@
 
 """ Import Python modules """
 
-import sys              # `sys module` allows for use of variables used by the interpreter and associated functions 
-import os               # `os module` allows for use of operating system-dependent functions 
-import re               # `re module` allows for regular expression parsing  
+import sys              # For use of interpreter variables & associated functions 
+import os               # For use of operating system-dependent functions 
+import re               # For regular expression parsing  
 
 """ Define functions """
 
 def osCheck():
-    """  Check if OS is 'Linux' """
-    if not sys.platform.startswith('linux'): 
+    """ Check if OS is 'Linux' """
+    if not sys.platform.startswith('linux'):
         print 'Sorry, this program was designed for Linux. Exiting.' 
         sys.exit()
 
@@ -68,6 +68,7 @@ def confirmWipe():
     while True: 
         try: 
             reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
+
             if reply == 'yes': 
                 return True              
             elif reply == 'no':
@@ -126,8 +127,7 @@ def interactiveMode():
         elif choice == '1': 
             zerosToDrive()
         elif choice == '2': 
-            randomToDrive()
-   
+            randomToDrive()   
 
 def wipeDrive():
     """ Prorgram to Wipe drive """ 
