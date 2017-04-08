@@ -88,11 +88,6 @@ def zerosToDrive():
     
     for int in range(num):
         print 'Processing pass count %s of %d ... '%(passes, num)
-
-""" In theory /dev/null should be replaced by `append`, e.g. append = /dev/sdb (if user entered 'b'), 
-    but in practice this doesn't work. Is it that different distros mount devices differently, 
-    or is my understanding of what these commands do incorrect? """
-
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb         
         passes += 1 
 
