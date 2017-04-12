@@ -28,6 +28,9 @@ def appendBlockDevice():
     type(letter)
     return '/dev/sd' + letter 
 
+''' So what is happening here is that appendBlockDevice is being represented as a string, rather than an actual device. 
+Not sure yet how to fix. '''
+
 def numberOfWipes():                                                                                                                  
     """ Prompt user for number of wipes to perform """                                                                                
     while True:                                                                                                                       
