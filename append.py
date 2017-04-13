@@ -51,7 +51,7 @@ def zerosToDrive():
     passes = 1                                                                                                                        
     for int in range(num):                                                                                                            
         print 'Processing pass count %s of %d ... '%(passes, num)                                                             
-        os.system(('dd if=/dev/zero of=append bs=4096')) # pv -ptrb                       
+        os.system(('dd if=/dev/zero of=' + append)) # pv -ptrb                       
         # os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=append bs=4096')) # pv -ptrb                       
         passes+=1         
 
