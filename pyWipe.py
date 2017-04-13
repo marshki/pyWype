@@ -135,5 +135,6 @@ def wipeDrive():
     osCheck()
     interactiveMode()
     
-if __name__ == '__main__': 
+if __name__ == '__main__':
+    print '\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.\n' 
     wipeDrive()
