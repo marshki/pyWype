@@ -14,6 +14,7 @@ Still early in development. **PROCEED WITH CAUTION**
 TODO: 
 - [x] Detect attached devices 
 - [x] Define block device(s) to be wiped  
+- [ ] Define partition(s) to be wiped 
 - [x] Define number of wipes 
 - [x] Confirm wipe 
 - [x] Zeros to drive 
@@ -21,7 +22,7 @@ TODO:
 - [x] Wipe drive 
 - [ ] Unit tests 
 - [ ] Python 2 & 3 
-- [ ] Menu 
+- [x] Menu 
 - [ ] Argument parsing for CLI action 
 - [ ] Investigate various wiping algorithms 
 - [ ] More stuff I can't think of ATM 
