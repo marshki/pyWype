@@ -20,6 +20,8 @@ def listBlockDevices():
 	""" List mounted block device(s) """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
+### Should add code to allow for: partition selction in addition to block device selection. ###
+
 def defineBlockDevice(): 
     """ Prompt user to define block device to wipe """
     
