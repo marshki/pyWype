@@ -28,9 +28,6 @@ def appendBlockDevice():
     type(letter)
     return '/dev/sd' + letter 
 
-''' So what is happening here is that appendBlockDevice is being represented as a string, rather than an actual device. 
-Not sure yet how to fix. '''
-
 def numberOfWipes():                                                                                                                  
     """ Prompt user for number of wipes to perform """                                                                                
     while True:                                                                                                                       
@@ -51,8 +48,7 @@ def zerosToDrive():
     passes = 1                                                                                                                        
     for int in range(num):                                                                                                            
         print 'Processing pass count %s of %d ... '%(passes, num)                                                             
-        os.system(('dd if=/dev/zero of=' + append)) # pv -ptrb                       
-        # os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=append bs=4096')) # pv -ptrb                       
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb                       
         passes+=1         
 
 zerosToDrive()
