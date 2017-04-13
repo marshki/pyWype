@@ -19,10 +19,13 @@ TODO:
 - [x] Confirm wipe 
 - [x] Zeros to drive 
 - [x] Random to drive 
-- [x] Wipe drive 
+- [x] Wipe drive
+- [ ] Support multiple drive wipes 
 - [ ] Unit tests 
-- [ ] Python 2 & 3 
+- [x] Python 2 
+- [ ] Python 3
 - [x] Menu 
 - [ ] Argument parsing for CLI action 
+- [ ] OS X compatibility? 
 - [ ] Investigate various wiping algorithms 
 - [ ] More stuff I can't think of ATM 
