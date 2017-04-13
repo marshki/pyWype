@@ -88,7 +88,7 @@ def zerosToDrive():
     
     for int in range(num):
         print 'Processing pass count %s of %d ... '%(passes, num)
-        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb         
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
 def randomToDrive():
@@ -102,7 +102,7 @@ def randomToDrive():
     
     for int in range(num):
         print 'Processing pass count %s of %d ...'%(passes, num)
-        os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of=/dev/null bs=4096')) # pv -ptrb 
+        os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
 def menu(): 
