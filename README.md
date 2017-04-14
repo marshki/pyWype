@@ -14,7 +14,7 @@ Still early in development. **PROCEED WITH CAUTION**
 TODO: 
 - [x] Detect attached devices 
 - [x] Define block device(s) to be wiped  
-- [ ] Define partition(s) to be wiped 
+- [x] Define partition(s) to be wiped 
 - [x] Define number of wipes 
 - [x] Confirm wipe 
 - [x] Zeros to drive 
