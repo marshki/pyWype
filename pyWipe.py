@@ -13,35 +13,33 @@ import re               # For regular expression parsing
 def osCheck():
     """ Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'):
-        print 'Sorry, this program was designed for Linux. Exiting.' 
+        print 'This program was designed for Linux. Exiting.' 
         sys.exit()
 
-def listBlockDevices():
-	""" List mounted block device(s) """ 
+def listDevPart():
+	""" List mounted device(s) / partition(s) """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
 
-### Should add code to allow for: partition selction in addition to block device selection. ###
-
-def defineBlockDevice(): 
-    """ Prompt user to define block device to wipe """
+def defineDevPart(): 
+    """ Prompt user to define device or partition to wipe """
     
-    devices = listBlockDevices() 
+    devpart = listDevPart() 
 
     while True:
         try: 
-            blockdevice = str(raw_input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            devicepartition = str(raw_input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
-            if not re.match("^[a-z]$|^[a-z]\d$", blockdevice):                                       
+            if not re.match("^[a-z]$|^[a-z]\d$", devicepartition):                                       
                 raise ValueError()
-            return blockdevice
+            return devicepartition
 
         except ValueError: 
-            print 'Sorry, that\'s not a valid block device. Try again.'
+            print 'Sorry, that\'s not a valid device / partition. Try again.'
  
-def appendBlockDevice(): 
-    """ Append user-defined block device to /dev/sd """
+def appendDevPart(): 
+    """ Append user-defined device/partition to /dev/sd """
     
-    letter = defineBlockDevice()
+    letter = defineDevPart()
     
     return '/dev/sd' + letter 
 
@@ -79,10 +77,10 @@ def confirmWipe():
         except ValueError: 
             print 'Sorry, that\'s not a valid entry. Try again.' 
  
-def zerosToDrive(): 
-    """ Write zeros to drive """
+def zerosToDevPart(): 
+    """ Write zeros to device/partition """
  
-    append = appendBlockDevice() 
+    append = appendDevPart() 
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -93,10 +91,10 @@ def zerosToDrive():
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
-def randomToDrive():
+def randomToDevPart():
     """ Write random zeros and ones to drive """
     
-    append = appendBlockDevice()    
+    append = appendDevPart()    
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -127,9 +125,9 @@ def interactiveMode():
         if choice == '3': 
             sys.exit() 
         elif choice == '1': 
-            zerosToDrive()
+            zerosToDevPart()
         elif choice == '2': 
-            randomToDrive()   
+            randomToDevPart()   
 
 def wipeDrive():
     """ Prorgram to Wipe drive """ 
