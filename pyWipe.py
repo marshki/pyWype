@@ -1,6 +1,6 @@
 #!/usr/bin/env python  
 
-""" Python 2.7 disk wiping utility for use on Linux operating systems. """
+""" Python 2.7 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 """ Import Python modules """
 
