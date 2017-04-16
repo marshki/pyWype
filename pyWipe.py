@@ -16,6 +16,8 @@ def osCheck():
         print 'This program was designed for Linux. Exiting.' 
         sys.exit()
 
+### Need to add option to quit program at any time with keyboard combination ### 
+
 def listDevPart():
 	""" List mounted device(s) / partition(s) """ 
 	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
@@ -108,9 +110,9 @@ def randomToDevPart():
 def menu(): 
     """ Menu prompt for use to select program option """ 
     while True: 
-        print '1. Overwrite all sectors with zeros (Faster, less secure).'
-        print '2. Overwrite all sectors with random data (Slower, more secure).'
-        print '3. I want to quit.' 
+        print '\n1. Overwrite all sectors with zeros (Faster, less secure).'
+        print '\n2. Overwrite all sectors with random data (Slower, more secure).'
+        print '\n3. I want to quit.' 
         print '' 
         choice = raw_input('Select an option (1, 2 or 3): ')
 
@@ -136,5 +138,5 @@ def wipeDrive():
     interactiveMode()
     
 if __name__ == '__main__':
-    print '\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.\n' 
+    print '\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.' 
     wipeDrive()
