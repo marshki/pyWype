@@ -20,6 +20,7 @@ TODO:
 - [x] Zeros to drive 
 - [x] Random to drive 
 - [x] Wipe drive
+- [ ] Quit at any time option 
 - [ ] Support multiple drive wipes 
 - [ ] Unit tests 
 - [x] Python 2 
