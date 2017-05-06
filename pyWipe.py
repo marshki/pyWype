@@ -3,7 +3,7 @@
 from __future__ import print_function 
 from builtins import input 
 
-""" Python 2.7 and Python 3.4  disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+""" Python 2.7 and Python 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 """ Import Python modules """
 
@@ -92,7 +92,7 @@ def zerosToDevPart():
     passes = 1 
     
     for int in range(num):
-        print('Processing pass count %s of %d ... ')%(passes, num)
+        print('Processing pass count {} of {} ... '.format(passes, num))
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
@@ -106,7 +106,7 @@ def randomToDevPart():
     passes = 1 
     
     for int in range(num):
-        print('Processing pass count %s of %d ...')%(passes, num)
+        print('Processing pass count {} of {} ...'.format(passes, num))
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
