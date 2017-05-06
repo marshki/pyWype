@@ -1,6 +1,9 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python3 
 
-""" Python 2.7 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+from __future__ import print_function 
+from builtins import input 
+
+""" Python 2.7 and Python 3.4  disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 """ Import Python modules """
 
@@ -13,7 +16,7 @@ import re               # For regular expression parsing
 def osCheck():
     """ Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'):
-        print 'This program was designed for Linux. Exiting.' 
+        print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
 ### Need to add option to quit program at any time with keyboard combination ### 
@@ -29,14 +32,14 @@ def defineDevPart():
 
     while True:
         try: 
-            devicepartition = str(raw_input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            devicepartition = str(input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", devicepartition):                                       
                 raise ValueError()
             return devicepartition
 
         except ValueError: 
-            print 'Sorry, that\'s not a valid device / partition. Try again.'
+            print('Sorry, that\'s not a valid device / partition. Try again.')
  
 def appendDevPart(): 
     """ Append user-defined device/partition to /dev/sd """
@@ -50,17 +53,17 @@ def numberOfWipes():
     
     while True: 
         try:
-            wipes = int(raw_input('How many times do you want to wipe the disk?: '))
+            wipes = int(input('How many times do you want to wipe the disk?: '))
             
             if not wipes > 0: 
                 raise ValueError()
             return wipes 
 
         except ValueError: 
-            print 'Sorry, that\'s not a valid number. Try again.'
+            print('Sorry, that\'s not a valid number. Try again.')
 
 def warningMessage(): 
-    print 'WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.' 
+    print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
 
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
@@ -69,7 +72,7 @@ def confirmWipe():
 
     while True: 
         try: 
-            reply = str(raw_input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
+            reply = str(input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
 
             if reply == 'yes': 
                 return True              
@@ -77,7 +80,7 @@ def confirmWipe():
                 sys.exit()
                  
         except ValueError: 
-            print 'Sorry, that\'s not a valid entry. Try again.' 
+            print('Sorry, that\'s not a valid entry. Try again.') 
  
 def zerosToDevPart(): 
     """ Write zeros to device/partition """
@@ -89,7 +92,7 @@ def zerosToDevPart():
     passes = 1 
     
     for int in range(num):
-        print 'Processing pass count %s of %d ... '%(passes, num)
+        print('Processing pass count %s of %d ... ')%(passes, num)
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
@@ -103,18 +106,18 @@ def randomToDevPart():
     passes = 1 
     
     for int in range(num):
-        print 'Processing pass count %s of %d ...'%(passes, num)
+        print('Processing pass count %s of %d ...')%(passes, num)
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
 def menu(): 
     """ Menu prompt for use to select program option """ 
     while True: 
-        print '\n1. Overwrite all sectors with zeros (Faster, less secure).'
-        print '\n2. Overwrite all sectors with random data (Slower, more secure).'
-        print '\n3. I want to quit.' 
-        print '' 
-        choice = raw_input('Select an option (1, 2 or 3): ')
+        print('\n1. Overwrite all sectors with zeros (Faster, less secure).')
+        print('\n2. Overwrite all sectors with random data (Slower, more secure).')
+        print('\n3. I want to quit.') 
+        print('') 
+        choice = input('Select an option (1, 2 or 3): ')
 
         if choice in ('1', '2', '3'): 
             return choice 
@@ -132,11 +135,11 @@ def interactiveMode():
             randomToDevPart()   
 
 def wipeDrive():
-    """ Prorgram to Wipe drive """ 
+    """ Program to Wipe drive """ 
     
     osCheck()
     interactiveMode()
     
 if __name__ == '__main__':
-    print '\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.' 
+    print('\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.') 
     wipeDrive()
