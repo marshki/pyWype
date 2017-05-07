@@ -4,7 +4,7 @@
 from __future__ import print_function 
 from builtins import input 
 
-""" Python 2.7 and Python 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+""" Python 2.7 &  3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 import sys              # For use of interpreter variables & associated functions 
 import os               # For use of operating system-dependent functions 
@@ -112,10 +112,11 @@ def randomToDevPart():
 def menu(): 
     """ Menu prompt for use to select program option """ 
     while True: 
-        print('\n1. Overwrite all sectors with zeros (Faster, less secure).')
-        print('\n2. Overwrite all sectors with random data (Slower, more secure).')
-        print('\n3. I want to quit.') 
-        print('') 
+        print(30 * "-", "MENU", 30 * "-")
+        print('1. Overwrite all sectors with zeros (Faster, less secure).')
+        print('2. Overwrite all sectors with random data (Slower, more secure).')
+        print('3. I want to quit.') 
+        print(66 * '-') 
         choice = input('Select an option (1, 2 or 3): ')
 
         if choice in ('1', '2', '3'): 
@@ -140,5 +141,9 @@ def wipeDrive():
     interactiveMode()
     
 if __name__ == '__main__':
-    print('\nWelcome to pyWype. This tool will irrecoverably wipe data from your drive(s). PROCEED WITH CAUTION.') 
+    print(28 * '-', " pyWype ", 28 * '-')
+    print('This tool will irrecoverably wipe data from your drive(s).') 
+    print('PROCEED WITH CAUTION.') 
+    print(66 * '-')  
+ 
     wipeDrive()
