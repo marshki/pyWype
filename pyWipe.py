@@ -15,7 +15,7 @@ import re               # For regular expression parsing
 def osCheck():
     """ Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'):
-        print('\nThis program was designed for Linux. Exiting.') 
+        print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
 ### Need to add option to quit program at any time with keyboard combination ### 
@@ -31,14 +31,14 @@ def defineDevPart():
 
     while True:
         try: 
-            devicepartition = str(input('\nEnter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            devicepartition = str(input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", devicepartition):                                       
                 raise ValueError()
             return devicepartition
 
         except ValueError: 
-            print('\nSorry, that\'s not a valid device / partition. Try again.')
+            print('Sorry, that\'s not a valid device / partition. Try again.')
  
 def appendDevPart(): 
     """ Append user-defined device/partition to /dev/sd """
@@ -52,17 +52,17 @@ def numberOfWipes():
     
     while True: 
         try:
-            wipes = int(input('\nHow many times do you want to wipe the disk?: '))
+            wipes = int(input('How many times do you want to wipe the disk?: '))
             
             if not wipes > 0: 
                 raise ValueError()
             return wipes 
 
         except ValueError: 
-            print('\nSorry, that\'s not a valid number. Try again.')
+            print('Sorry, that\'s not a valid number. Try again.')
 
 def warningMessage(): 
-    print('\nWARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
+    print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
 
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
@@ -71,7 +71,7 @@ def confirmWipe():
 
     while True: 
         try: 
-            reply = str(input('\nAre you sure you want to proceed? (Yes/No): ')).lower().strip()
+            reply = str(input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
 
             if reply == 'yes': 
                 return True              
@@ -79,7 +79,7 @@ def confirmWipe():
                 sys.exit()
                  
         except ValueError: 
-            print('\nSorry, that\'s not a valid entry. Try again.') 
+            print('Sorry, that\'s not a valid entry. Try again.') 
  
 def zerosToDevPart(): 
     """ Write zeros to device/partition """
@@ -91,7 +91,7 @@ def zerosToDevPart():
     passes = 1 
     
     for int in range(num):
-        print('\nProcessing pass count {} of {} ... '.format(passes, num))
+        print('Processing pass count {} of {} ... '.format(passes, num))
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
@@ -105,7 +105,7 @@ def randomToDevPart():
     passes = 1 
     
     for int in range(num):
-        print('\nProcessing pass count {} of {} ...'.format(passes, num))
+        print('Processing pass count {} of {} ...'.format(passes, num))
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
