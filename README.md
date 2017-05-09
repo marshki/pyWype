@@ -22,7 +22,7 @@ TODO:
 - [x] Wipe drive
 - [ ] Quit at any time option 
 - [ ] Support multiple drive wipes 
-- [ ] Unit tests 
+- [ ] Unit tests and integration with [Travis CI](https://travis-ci.org/)  
 - [x] Python 2 
 - [ ] Python 3
 - [x] Menu 
