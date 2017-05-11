@@ -18,15 +18,21 @@ def osCheck():
         print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
-### Need to add option to quit program at any time with keyboard combination ### 
+def devPartHeader():
+    """ Header for attached device(s) / partition(s) """
 
-def listDevPart():
-	""" List mounted device(s) / partition(s) """ 
-	return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')    # lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE
+    print(24 * "-", "ATTACHED DEVICES", 24 * "-")
+
+def listDevPart(): 
+    """ List mounted device(s) / partition(s) """
+    
+    header = devPartHeader()
+
+    return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
 def defineDevPart(): 
     """ Prompt user to define device or partition to wipe """
-    
+
     devpart = listDevPart() 
 
     while True:
@@ -79,7 +85,7 @@ def confirmWipe():
                 sys.exit()
                  
         except ValueError: 
-            print('Sorry, that\'s not a valid entry. Try again.') 
+            print('Sorry, that\'s not a valid entry. Try again: ') 
  
 def zerosToDevPart(): 
     """ Write zeros to device/partition """
@@ -116,7 +122,6 @@ def menu():
         print('1. Overwrite all sectors with zeros (Faster, less secure).')
         print('2. Overwrite all sectors with random data (Slower, more secure).')
         print('3. I want to quit.') 
-        print(66 * '-') 
         choice = input('Select an option (1, 2 or 3): ')
 
         if choice in ('1', '2', '3'): 
@@ -144,6 +149,5 @@ if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
     print('This tool will irrecoverably wipe data from your drive(s).') 
     print('PROCEED WITH CAUTION.') 
-    print(66 * '-')  
  
     wipeDrive()
