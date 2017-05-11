@@ -6,8 +6,8 @@ from builtins import input
 
 """ Python 2.7 &  3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
-import sys              # For use of interpreter variables & associated functions 
-import os               # For use of operating system-dependent functions 
+import sys              # For interpreter variables & associated functions 
+import os               # For operating system-dependent functions 
 import re               # For regular expression parsing  
 
 """ Define functions """
@@ -20,7 +20,6 @@ def osCheck():
 
 def devPartHeader():
     """ Header for attached device(s) / partition(s) """
-
     print(24 * "-", "ATTACHED DEVICES", 24 * "-")
 
 def listDevPart(): 
@@ -68,6 +67,7 @@ def numberOfWipes():
             print('Sorry, that\'s not a valid number. Try again.')
 
 def warningMessage(): 
+    """ Warning! """
     print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
 
 def confirmWipe():
