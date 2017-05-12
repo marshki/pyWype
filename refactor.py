@@ -76,11 +76,12 @@ def menu():
         if choice in ('1', '2', '3'): 
             return choice 
 
-menu()
 
-'''
 def interactiveMode(): 
     """ Display menu-driven options and return conversions. """
+
+    menz = menu()
+
     while True: 
         choice = menu() 
 
@@ -94,6 +95,9 @@ def interactiveMode():
             print('2')
             # randomToDevPart() 
 
+interactiveMode()
+
+'''
 def wipeDrive():
     """ Program to Wipe drive """ 
     
