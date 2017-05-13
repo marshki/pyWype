@@ -1,8 +1,5 @@
 #!/usr/bin/env python 
 #!/usr/bin/env python3 
-# Refactor code
-# 
-
 
 from __future__ import print_function 
 from builtins import input 
@@ -21,14 +18,14 @@ import re               # For regular expression parsing
 #        print('This program was designed for Linux. Exiting.') 
 #        sys.exit()
 
-def devicesHeader():
+def listDevicesHeader():
     """ Header for attached device(s) / partition(s) """
     print(24 * "-", "ATTACHED DEVICES", 24 * "-")
 
 def listDevices(): 
     """ List mounted device(s) / partition(s) """
     
-    header = devicesHeader()
+    header = listDevicesHeader()
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
@@ -62,7 +59,7 @@ def appendDevice():
     return '/dev/sd' + letter
 
 def menu(): 
-    """ Menu prompt for use to select program option """ 
+    """ Menu prompt for user to select program option """ 
 
     append = appendDevice()    
 
@@ -76,28 +73,92 @@ def menu():
         if choice in ('1', '2', '3'): 
             return choice 
 
+def numberOfWipes(): 
+    """ Prompt user for number of wipes to perform """ 
+    
+    while True: 
+        try:
+            wipes = int(input('How many times do you want to wipe the disk?: '))
+            
+            if not wipes > 0: 
+                raise ValueError()
+            return wipes 
+
+        except ValueError: 
+            print('Sorry, that\'s not a valid number. Try again.')
+
+def warningMessage(): 
+    """ Warning! """
+    print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
+
+def confirmWipe():
+    """ Prompt user to confirm disk erasure """
+    
+    warning = warningMessage()
+
+    while True: 
+        try: 
+            reply = str(input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
+
+            if reply == 'yes': 
+                return True              
+            elif reply == 'no':
+                sys.exit()
+                 
+        except ValueError: 
+            print('Sorry, that\'s not a valid entry. Try again: ') 
+ 
+def zerosToDevPart(): 
+    """ Write zeros to device/partition """
+ 
+    # append = appendDevice() 
+    num = numberOfWipes()
+    confirm = confirmWipe()
+
+    passes = 1 
+    
+    for int in range(num):
+        print('Processing pass count {} of {} ... '.format(passes, num))
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
+        passes += 1 
 
 def interactiveMode(): 
     """ Display menu-driven options and return conversions. """
-
-    menz = menu()
 
     while True: 
         choice = menu() 
 
         if choice == '3': 
             print('3')
-            # sys.exit() 
+            sys.exit() 
         elif choice == '1': 
-            print('1')
-            # zerosToDevPart()
+            
+            # print('1')
         elif choice == '2': 
             print('2')
-            # randomToDevPart() 
 
 interactiveMode()
 
 '''
+
+def randomToDevPart():
+    """ Write random zeros and ones to drive """
+    
+    append = appendDevPart()    
+    num = numberOfWipes()
+    confirm = confirmWipe()
+
+    passes = 1 
+    
+    for int in range(num):
+        print('Processing pass count {} of {} ...'.format(passes, num))
+        os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
+        passes += 1 
+
+
+interactiveMode()
+
+
 def wipeDrive():
     """ Program to Wipe drive """ 
     
@@ -173,7 +234,5 @@ def randomToDevPart():
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
-
-  
-
 '''
+
