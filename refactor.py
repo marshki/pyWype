@@ -31,7 +31,7 @@ def listDevices():
 
 def defineDeviceHeader():
     """ Header for device(s) / partiton(s)  definition """
-    print(25 * "-", "SELECT DEVICE", 25 * "-")
+    print(24 * "-", "SELECT DEVICE  ", 25 * "-")
 
 def defineDevice(): 
     """ Prompt user to define device or partition to wipe """
@@ -58,10 +58,14 @@ def appendDevice():
     
     return '/dev/sd' + letter
 
+appendDevice()
+
+'''
+
 def menu(): 
     """ Menu prompt for user to select program option """ 
 
-    append = appendDevice()    
+    # append = appendDevice()    
 
     while True: 
         print(30 * "-", "SELECT ACTION", 30 * "-")
@@ -111,7 +115,7 @@ def confirmWipe():
 def zerosToDevPart(): 
     """ Write zeros to device/partition """
  
-    # append = appendDevice() 
+    append = appendDevice() 
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -131,15 +135,13 @@ def interactiveMode():
         if choice == '3': 
             print('3')
             sys.exit() 
-        elif choice == '1': 
-            
-            # print('1')
+        elif choice == '1':
+            zerosToDevPart()     
+            print('1')
         elif choice == '2': 
             print('2')
 
 interactiveMode()
-
-'''
 
 def randomToDevPart():
     """ Write random zeros and ones to drive """
@@ -235,4 +237,3 @@ def randomToDevPart():
         passes += 1 
 
 '''
-
