@@ -31,13 +31,9 @@ def listDevPart():
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
-listDevPart()
 
-'''
 def defineDevPart(): 
     """ Prompt user to define device or partition to wipe """
-
-    devpart = listDevPart() 
 
     while True:
         try: 
@@ -57,6 +53,25 @@ def appendDevPart():
     
     return '/dev/sd' + letter 
 
+
+
+def menu(): 
+    """ Menu prompt for use to select program option """ 
+    while True: 
+        print(30 * "-", "MENU", 30 * "-")
+        print('1. Overwrite all sectors with zeros (Faster, less secure).')
+        print('2. Overwrite all sectors with random data (Slower, more secure).')
+        print('3. I want to quit.') 
+        choice = input('Select an option (1, 2 or 3): ')
+
+        if choice in ('1', '2', '3'): 
+            return choice 
+
+listDevPart()
+appendDevPart()
+menu()
+
+'''
 def numberOfWipes(): 
     """ Prompt user for number of wipes to perform """ 
     
