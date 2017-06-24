@@ -12,11 +12,11 @@ import re               # For regular expression parsing
 
 """ Define functions """
 
-def osCheck():
-    """ Check if OS is 'Linux' """
-    if not sys.platform.startswith('linux'):
-        print('This program was designed for Linux. Exiting.') 
-        sys.exit()
+#def osCheck():
+#    """ Check if OS is 'Linux' """
+#    if not sys.platform.startswith('linux'):
+#        print('This program was designed for Linux. Exiting.') 
+#        sys.exit()
 
 def devPartHeader():
     """ Header for attached device(s) / partition(s) """
@@ -52,18 +52,34 @@ def appendDevPart():
 
 def menu(): 
 
-    device  = appendDevPart()
-
     """ Menu prompt for use to select program option """ 
     while True: 
         print(30 * "-", "MENU", 30 * "-")
         print('1. Overwrite all sectors with zeros (Faster, less secure).')
         print('2. Overwrite all sectors with random data (Slower, more secure).')
-        print('3. I want to quit.') 
+        print('3. Quit.') 
         choice = input('Select an option (1, 2 or 3): ')
 
         if choice in ('1', '2', '3'): 
             return choice 
+
+listDevPart()
+appendDevPart()
+menu()
+
+'''
+def interactiveMode(): 
+    """ Display menu-driven options and return conversions. """
+    while True: 
+
+        choice = menu() 
+
+        if choice == '3': 
+            sys.exit() 
+        elif choice == '1': 
+            zerosToDevPart()
+        elif choice == '2': 
+            randomToDevPart()   
 
 def numberOfWipes(): 
 
@@ -82,10 +98,6 @@ def numberOfWipes():
         except ValueError: 
             print('Sorry, that\'s not a valid number. Try again.')
 
-listDevPart()
-numberOfWipes()
-
-'''
 def warningMessage(): 
     """ Warning! """
     print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
@@ -93,6 +105,8 @@ def warningMessage():
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
     
+    number = numberOfWipes()
+
     warning = warningMessage()
 
     while True: 
@@ -106,6 +120,7 @@ def confirmWipe():
                  
         except ValueError: 
             print('Sorry, that\'s not a valid entry. Try again: ') 
+
 
 def zerosToDevPart(): 
     """ Write zeros to device/partition """
@@ -135,17 +150,6 @@ def randomToDevPart():
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
-def interactiveMode(): 
-    """ Display menu-driven options and return conversions. """
-    while True: 
-        choice = menu() 
-
-        if choice == '3': 
-            sys.exit() 
-        elif choice == '1': 
-            zerosToDevPart()
-        elif choice == '2': 
-            randomToDevPart()   
 
 def wipeDrive():
     """ Program to Wipe drive """ 
