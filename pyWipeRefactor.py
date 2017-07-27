@@ -67,7 +67,6 @@ listDevPart()
 appendDevPart()
 menu()
 
-'''
 def interactiveMode(): 
     """ Display menu-driven options and return conversions. """
     while True: 
@@ -80,6 +79,7 @@ def interactiveMode():
             zerosToDevPart()
         elif choice == '2': 
             randomToDevPart()   
+
 
 def numberOfWipes(): 
 

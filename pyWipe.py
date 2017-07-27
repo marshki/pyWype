@@ -147,7 +147,6 @@ def wipeDrive():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print('This tool will irrecoverably wipe data from your drive(s).') 
-    print('PROCEED WITH CAUTION.') 
+    print('PYTHON DISK WIPING UTILITY.\nTHIS TOOL WILL IRRECOVERABLY WIPE DATA FROM YOUR DRIVE.\nPROCEED WITH CAUTION.') 
  
     wipeDrive()
