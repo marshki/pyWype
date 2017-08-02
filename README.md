@@ -25,7 +25,7 @@ TODO:
 - [ ] Support multiple drive wipes 
 - [ ] Unit tests and integration with [Travis CI](https://travis-ci.org/)  
 - [x] Python 2 
-- [ ] Python 3
+- [X] Python 3
 - [x] Menu 
 - [ ] Argument parsing for CLI action 
 - [ ] OS X compatibility? Can we get this to work w/out having to use, e.g. Homebrew?  
