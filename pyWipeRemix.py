@@ -4,7 +4,7 @@
 from __future__ import print_function 
 from builtins import input 
 
-""" Python 2.7 &  3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+""" Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system-dependent functions 
@@ -18,19 +18,25 @@ def osCheck():
         print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
-def Header():
+def printHeader():
     """ Header for attached device(s) / partition(s) """
     print(24 * "-", "ATTACHED DEVICES", 24 * "-")
 
 def listDevices(): 
     """ List mounted device(s) / partition(s) """
     
-    header = Header()
+    header = printHeader()
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
+#def listPartitions():
+#    """ List mounted partitions """
+
+
+
+
 def defineDevice(): 
-    """ Prompt user to define device or partition to wipe """
+    """ Prompt user to define device or device/partition to wipe """
 
     while True:
         try: 
