@@ -117,7 +117,7 @@ def randomToDevice():
 def menu(): 
     """ Menu prompt for use to select program option """ 
     
-    devices = listDevices() 
+    devices = listDevice() 
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
@@ -137,9 +137,9 @@ def interactiveMode():
         if choice == '3': 
             sys.exit() 
         elif choice == '1': 
-            zerosToDevPart()
+            zerosToDevice()
         elif choice == '2': 
-            randomToDevPart()   
+            randomToDevice()   
 
 def wipeDrive():
     """ Program to Wipe drive """ 
