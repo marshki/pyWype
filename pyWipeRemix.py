@@ -18,14 +18,14 @@ def osCheck():
         print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
-def deviceHeader():
+def Header():
     """ Header for attached device(s) / partition(s) """
     print(24 * "-", "ATTACHED DEVICES", 24 * "-")
 
-def listDevice(): 
+def listDevices(): 
     """ List mounted device(s) / partition(s) """
     
-    header = deviceHeader()
+    header = Header()
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
@@ -34,15 +34,15 @@ def defineDevice():
 
     while True:
         try: 
-            device = str(input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input('Enter letter and partion of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
             return device
 
         except ValueError: 
-            print('Sorry, that\'s not a valid device. Try again.')
- 
+            print('Sorry, that\'s not a valid device/partition. Try again.')
+
 def appendDevice(): 
     """ Append user-defined device/partition to /dev/sd """
     
@@ -55,7 +55,7 @@ def numberOfWipes():
     
     while True: 
         try:
-            wipes = int(input('How many times do you want to wipe the disk?: '))
+            wipes = int(input('How many times do you want to wipe the device/partition?: '))
             
             if not wipes > 0: 
                 raise ValueError()
@@ -101,7 +101,7 @@ def zerosToDevice():
         passes += 1 
 
 def randomToDevice():
-    """ Write random zeros and ones to drive """
+    """ Write random zeros and ones to device/partition """
     
     append = appendDevice()    
     num = numberOfWipes()
@@ -117,12 +117,12 @@ def randomToDevice():
 def menu(): 
     """ Menu prompt for use to select program option """ 
     
-    devices = listDevice() 
+    devices = listDevices() 
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
-        print('1. Overwrite all sectors with zeros (Faster, less secure).')
-        print('2. Overwrite all sectors with random data (Slower, more secure).')
+        print('1. Overwrite device/partition with zeros (Faster, less secure).')
+        print('2. Overwrite device/partition with random data (Slower, more secure).')
         print('3. I want to quit.') 
         choice = input('Select an option (1, 2 or 3): ')
 
@@ -141,7 +141,7 @@ def interactiveMode():
         elif choice == '2': 
             randomToDevice()   
 
-def wipeDrive():
+def wipeDevice():
     """ Program to Wipe drive """ 
     
     osCheck()
@@ -149,6 +149,6 @@ def wipeDrive():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print('PYTHON DISK WIPING UTILITY FOR LINUX.\nTHIS TOOL WILL IRRECOVERABLY WIPE DATA FROM YOUR DRIVE.\nPROCEED WITH CAUTION.') 
+    print('PYTHON DISK/PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.') 
  
-    wipeDrive()
+    wipeDevice()
