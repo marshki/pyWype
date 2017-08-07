@@ -18,37 +18,35 @@ def osCheck():
         print('This program was designed for Linux. Exiting.') 
         sys.exit()
 
-def devPartHeader():
+def deviceHeader():
     """ Header for attached device(s) / partition(s) """
     print(24 * "-", "ATTACHED DEVICES", 24 * "-")
 
-def listDevPart(): 
+def listDevice(): 
     """ List mounted device(s) / partition(s) """
     
-    header = devPartHeader()
+    header = deviceHeader()
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
-def defineDevPart(): 
+def defineDevice(): 
     """ Prompt user to define device or partition to wipe """
-
-    # devpart = listDevPart() 
 
     while True:
         try: 
-            devicepartition = str(input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input('Enter letter of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
-            if not re.match("^[a-z]$|^[a-z]\d$", devicepartition):                                       
+            if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
-            return devicepartition
+            return device
 
         except ValueError: 
-            print('Sorry, that\'s not a valid device / partition. Try again.')
+            print('Sorry, that\'s not a valid device. Try again.')
  
-def appendDevPart(): 
+def appendDevice(): 
     """ Append user-defined device/partition to /dev/sd """
     
-    letter = defineDevPart()
+    letter = defineDevice()
     
     return '/dev/sd' + letter 
 
@@ -82,15 +80,16 @@ def confirmWipe():
             if reply == 'yes': 
                 return True              
             elif reply == 'no':
+                print('Exiting pyWype.')
                 sys.exit()
                  
         except ValueError: 
             print('Sorry, that\'s not a valid entry. Try again: ') 
  
-def zerosToDevPart(): 
+def zerosToDevice(): 
     """ Write zeros to device/partition """
  
-    append = appendDevPart() 
+    append = appendDevice() 
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -101,10 +100,10 @@ def zerosToDevPart():
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
-def randomToDevPart():
+def randomToDevice():
     """ Write random zeros and ones to drive """
     
-    append = appendDevPart()    
+    append = appendDevice()    
     num = numberOfWipes()
     confirm = confirmWipe()
 
@@ -118,7 +117,7 @@ def randomToDevPart():
 def menu(): 
     """ Menu prompt for use to select program option """ 
     
-    devpart = listDevPart() 
+    devices = listDevices() 
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
@@ -146,7 +145,6 @@ def wipeDrive():
     """ Program to Wipe drive """ 
     
     osCheck()
-    # listDevPart()
     interactiveMode()
     
 if __name__ == '__main__':
