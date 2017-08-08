@@ -20,7 +20,7 @@ def osCheck():
 
 def printHeader():
     """ Header for attached device(s) / partition(s) """
-    print(24 * "-", "ATTACHED DEVICES/PARTITIONS", 24 * "-")
+    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")
 
 def listDevices(): 
     """ List mounted device(s) / partition(s) """
@@ -35,7 +35,7 @@ def defineDevice():
 
     while True:
         try: 
-            device = str(input('Enter letter and partion of block device to be wiped, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input('Enter letter of device or letter & number of partition to wipe, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
@@ -56,7 +56,7 @@ def numberOfWipes():
     
     while True: 
         try:
-            wipes = int(input('How many times do you want to wipe the device/partition?: '))
+            wipes = int(input('How many times do you want to wipe the device or partition?: '))
             
             if not wipes > 0: 
                 raise ValueError()
@@ -122,8 +122,8 @@ def menu():
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
-        print('1. Overwrite device/partition with zeros (Faster, less secure).')
-        print('2. Overwrite device/partition with random data (Slower, more secure).')
+        print('1. Overwrite device or partition with 0\'s  (faster, less secure).')
+        print('2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).')
         print('3. I want to quit.') 
         choice = input('Select an option (1, 2 or 3): ')
 
