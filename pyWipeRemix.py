@@ -27,7 +27,10 @@ def listDevices():
     
     header = printHeader()
 
-    return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
+    # return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
+
+    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,SIZE,TYPE,STATE
+
 
 def defineDevice(): 
     """ Prompt user to define device or device/partition to wipe """
