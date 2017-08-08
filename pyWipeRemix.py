@@ -33,8 +33,6 @@ def listDevices():
 #    """ List mounted partitions """
 
 
-
-
 def defineDevice(): 
     """ Prompt user to define device or device/partition to wipe """
 
