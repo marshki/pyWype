@@ -35,7 +35,7 @@ def defineDevice():
 
     while True:
         try: 
-            device = str(input('Enter letter of device or letter & number of partition to wipe, e.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input('Enter letter of device or letter & number of partition to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\'\ne.g. to wipe \'/dev/sdb1\' enter \'b1\'\n: '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
@@ -122,7 +122,7 @@ def menu():
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
-        print('1. Overwrite device or partition with 0\'s  (faster, less secure).')
+        print('1. Overwrite device or partition with 0\'s \n(faster, less secure).')
         print('2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).')
         print('3. I want to quit.') 
         choice = input('Select an option (1, 2 or 3): ')
