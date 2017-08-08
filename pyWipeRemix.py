@@ -29,10 +29,6 @@ def listDevices():
 
     return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
 
-#def listPartitions():
-#    """ List mounted partitions """
-
-
 def defineDevice(): 
     """ Prompt user to define device or device/partition to wipe """
 
