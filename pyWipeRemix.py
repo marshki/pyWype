@@ -20,16 +20,14 @@ def osCheck():
 
 def printHeader():
     """ Header for attached device(s) / partition(s) """
-    print(24 * "-", "ATTACHED DEVICES", 24 * "-")
+    print(24 * "-", "ATTACHED DEVICES/PARTITIONS", 24 * "-")
 
 def listDevices(): 
     """ List mounted device(s) / partition(s) """
     
     header = printHeader()
 
-    # return os.system('lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,STATE')      #lsblk -d -o NAME,MODEL,VENDOR,SIZE,STATE 
-
-    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,SIZE,TYPE,STATE
+    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,VENDOR...
 
 
 def defineDevice(): 
