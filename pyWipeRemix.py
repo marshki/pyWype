@@ -7,7 +7,7 @@ from builtins import input
 """ Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
 
 import sys              # For interpreter variables & associated functions 
-import os               # For operating system-dependent functions 
+import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
 """ Define functions """
@@ -29,20 +29,19 @@ def listDevices():
 
     return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,VENDOR...
 
-
 def defineDevice(): 
-    """ Prompt user to define device or device/partition to wipe """
+    """ Prompt user to define device or partition to wipe """
 
     while True:
         try: 
-            device = str(input('Enter letter of device or letter & number of partition to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\'\ne.g. to wipe \'/dev/sdb1\' enter \'b1\'\n: '))  
+            device = str(input('Enter letter of device or partition you want to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
             return device
 
         except ValueError: 
-            print('Sorry, that\'s not a valid device/partition. Try again.')
+            print('Sorry, that\'s not a valid device or partition. Try again.')
 
 def appendDevice(): 
     """ Append user-defined device/partition to /dev/sd """
@@ -124,7 +123,7 @@ def menu():
         print(30 * "-", "MENU", 30 * "-")
         print('1. Overwrite device or partition with 0\'s \n(faster, less secure).')
         print('2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).')
-        print('3. I want to quit.') 
+        print('3. Quit.') 
         choice = input('Select an option (1, 2 or 3): ')
 
         if choice in ('1', '2', '3'): 
