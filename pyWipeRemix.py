@@ -34,7 +34,7 @@ def defineDevice():
 
     while True:
         try: 
-            device = str(input('Enter letter of device or partition you want to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input('Enter letter [and number] of device/partition to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\': '))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
@@ -149,6 +149,6 @@ def wipeDevice():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print('PYTHON DISK/PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.') 
+    print('PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.') 
  
     wipeDevice()
