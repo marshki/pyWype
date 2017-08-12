@@ -4,7 +4,7 @@ A text-based Python tool to securely wipe hard drives and partitions in Linux.
 Tested to work in Python 2.7 & 3.4. 
 
 *diskWipe.py* works as is in Python 2.7 
-*pyWypeRemix.p* works as is in Python 2.7 & 3.4 
+*pyWypeRemix.py* works as is in Python 2.7 & 3.4 
 
 PROCEED WITH CAUTION. THIS WILL IRRECOVERABLY WIPE DATA FROM YOUR DISK.  
 Still early in development.
