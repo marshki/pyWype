@@ -130,7 +130,7 @@ def menu():
             return choice 
 
 def interactiveMode(): 
-    """ Display menu-driven options and return conversions. """
+    """ Display menu-driven options and run function based on selection """
     while True: 
         choice = menu() 
 
