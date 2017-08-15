@@ -9,6 +9,11 @@ Tested to work in Python 2.7 & 3.4.
 PROCEED WITH CAUTION. THIS WILL IRRECOVERABLY WIPE DATA FROM YOUR DISK.  
 Still early in development.
 
+Open New Issues for: 
+
+- [] dd: error wiritng '/dev/sdb': No space left on device 
+- [] dd: writing to 'standard output': Broken pipe 
+
 TODO: 
 - [x] Detect attached devices 
 - [x] Define block device(s) to be wiped  
