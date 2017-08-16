@@ -1,16 +1,18 @@
 ## pyWipe
 
-A text-based tool to securely wipe hard drives written to work with Python 2 (and eventually Python 3).
+A text-based Python tool to securely wipe hard drives and partitions in Linux. 
+Tested to work in Python 2.7 & 3.4. 
 
 *diskWipe.py* works as is in Python 2.7 
-The idea here is to enhance the program in Python 2.7 first, then add support for Python 3.4. Eventually, it would be nice if this program could functionally do what OS X's Disk Utility--secure erase option--does: 
+*pyWypeRemix.py* works as is in Python 2.7 & 3.4 
 
+PROCEED WITH CAUTION. THIS WILL IRRECOVERABLY WIPE DATA FROM YOUR DISK.  
+Still early in development.
 
-![Alt text](https://github.com/marshki/pyWipe/blob/master/secure_erase.png?raw=true "Disk Utility--secureErase")
+Open New Issues for: 
 
-
- 
-Still early in development. **PROCEED WITH CAUTION**
+- [] dd: error wiritng '/dev/sdb': No space left on device 
+- [] dd: writing to 'standard output': Broken pipe 
 
 TODO: 
 - [x] Detect attached devices 
@@ -28,6 +30,6 @@ TODO:
 - [X] Python 3
 - [x] Menu 
 - [ ] Argument parsing for CLI action 
-- [ ] OS X compatibility? Can we get this to work w/out having to use, e.g. Homebrew?  
+- [ ] OS X compatibility? Can we ammend this to run in both Linux and OS X? 
 - [ ] Investigate various wiping algorithms 
 - [ ] More stuff I can't think of ATM 
