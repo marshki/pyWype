@@ -17,14 +17,10 @@ def osCheck():
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
-def printHeader():
-    """ Header for attached device(s) / partition(s) """
-    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")
-
 def listDevices(): 
     """ List mounted device(s) / partition(s) """
     
-    header = printHeader()
+    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
     return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,VENDOR...
 
@@ -63,14 +59,10 @@ def numberOfWipes():
         except ValueError: 
             print("Sorry, that's not a valid number. Try again.")
 
-def warningMessage(): 
-    """ Warning! """
-    print("WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.") 
-
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
     
-    warning = warningMessage()
+    print("WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.") 
 
     while True: 
         try: 
