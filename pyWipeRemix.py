@@ -31,7 +31,8 @@ def defineDevice():
         try: 
             device = str(input("Enter letter [and number] of device/partition to wipe,\ne.g. to wipe '/dev/sdb' enter 'b': "))  
 
-            if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
+            # if not re.match("^[a-z]$|^[a-z]\d$", device):  
+            if not re.match("^[a-z][0-9]?$", device):                                      
                 raise ValueError()
             return device
 
