@@ -14,7 +14,7 @@ import re               # For regular expression parsing
 def osCheck():
     """ Check if OS is 'Linux' """
     if not sys.platform.startswith('linux'):
-        print('This program was designed for Linux. Exiting.') 
+        print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
 def printHeader():
@@ -33,14 +33,14 @@ def defineDevice():
 
     while True:
         try: 
-            device = str(input('Enter letter [and number] of device/partition to wipe,\ne.g. to wipe \'/dev/sdb\' enter \'b\': '))  
+            device = str(input("Enter letter [and number] of device/partition to wipe,\ne.g. to wipe '/dev/sdb' enter 'b': "))  
 
             if not re.match("^[a-z]$|^[a-z]\d$", device):                                       
                 raise ValueError()
             return device
 
         except ValueError: 
-            print('Sorry, that\'s not a valid device or partition. Try again.')
+            print("Sorry, that's not a valid device or partition. Try again.")
 
 def appendDevice(): 
     """ Append user-defined device/partition to /dev/sd """
@@ -54,18 +54,18 @@ def numberOfWipes():
     
     while True: 
         try:
-            wipes = int(input('How many times do you want to wipe the device or partition?: '))
+            wipes = int(input("How many times do you want to wipe the device or partition?: "))
             
             if not wipes > 0: 
                 raise ValueError()
             return wipes 
 
         except ValueError: 
-            print('Sorry, that\'s not a valid number. Try again.')
+            print("Sorry, that's not a valid number. Try again.")
 
 def warningMessage(): 
     """ Warning! """
-    print('WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.') 
+    print("WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.") 
 
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
@@ -74,16 +74,16 @@ def confirmWipe():
 
     while True: 
         try: 
-            reply = str(input('Are you sure you want to proceed? (Yes/No): ')).lower().strip()
+            reply = str(input("Are you sure you want to proceed? (Yes/No): ")).lower().strip()
 
             if reply == 'yes': 
                 return True              
             elif reply == 'no':
-                print('Exiting pyWype.')
+                print("Exiting pyWype.")
                 sys.exit()
                  
         except ValueError: 
-            print('Sorry, that\'s not a valid entry. Try again: ') 
+            print("Sorry, that's not a valid entry. Try again: ") 
  
 def zerosToDevice(): 
     """ Write zeros to device/partition """
@@ -95,7 +95,7 @@ def zerosToDevice():
     passes = 1 
     
     for int in range(num):
-        print('Processing pass count {} of {} ... '.format(passes, num))
+        print("Processing pass count {} of {} ... ".format(passes, num))
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
         passes += 1 
 
@@ -109,7 +109,7 @@ def randomToDevice():
     passes = 1 
     
     for int in range(num):
-        print('Processing pass count {} of {} ...'.format(passes, num))
+        print("Processing pass count {} of {} ... ".format(passes, num))
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
         passes += 1 
 
@@ -120,10 +120,10 @@ def menu():
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")
-        print('1. Overwrite device or partition with 0\'s \n(faster, less secure).')
-        print('2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).')
-        print('3. Quit.') 
-        choice = input('Select an option (1, 2 or 3): ')
+        print("1. Overwrite device or partition with 0's \n(faster, less secure).")
+        print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
+        print("3. Quit.") 
+        choice = input("Select an option (1, 2 or 3): ")
 
         if choice in ('1', '2', '3'): 
             return choice 
@@ -148,6 +148,6 @@ def wipeDevice():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print('PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.') 
+    print("PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
  
     wipeDevice()
