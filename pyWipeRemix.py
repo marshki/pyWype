@@ -84,12 +84,12 @@ def zerosToDevice():
     num = numberOfWipes()
     confirm = confirmWipe()
 
-    passes = 1 
+    # passes = 1 
     
     for int in range(num):
-        print("Processing pass count {} of {} ... ".format(passes, num))
+        print("Processing pass count {} of {} ... ".format(int + 1, num)) #(passes, num))
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
-        passes += 1 
+        # passes += 1 
 
 def randomToDevice():
     """ Write random zeros and ones to device/partition """
