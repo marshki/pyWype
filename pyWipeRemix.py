@@ -97,7 +97,11 @@ def randomToDevice():
     
     for int in range(num):
         print("Processing pass count {} of {} ... ".format(int + 1, num))
+<<<<<<< HEAD
         os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
+=======
+        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
+>>>>>>> e10d4f8bb072b1b0b84675dce59724fd19f18680
 
 def menu(): 
     """ Menu prompt for use to select program option """ 
