@@ -94,13 +94,10 @@ def randomToDevice():
     append = appendDevice()    
     num = numberOfWipes()
     confirm = confirmWipe()
-
-    # passes = 1 
     
     for int in range(num):
         print("Processing pass count {} of {} ... ".format(int + 1, num))
-        os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
-        # passes += 1 
+        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
 
 def menu(): 
     """ Menu prompt for use to select program option """ 
