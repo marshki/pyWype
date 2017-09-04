@@ -31,5 +31,6 @@ TODO:
 - [x] Menu 
 - [ ] Argument parsing for CLI action 
 - [ ] OS X compatibility? Can we ammend this to run in both Linux and OS X? 
+* Added OS X version with comments 
 - [ ] Investigate various wiping algorithms 
 - [ ] More stuff I can't think of ATM 
