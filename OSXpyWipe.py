@@ -1,12 +1,15 @@
 #!/usr/bin/env python 
-# This will be a fork of the original program, ported to work with OS X
-# Ideally this program will run on both platforms 
-# TODO: 
-# Check is we are running OS X 
-# Add dependency check & requirements page 
-# List devices with alternative to lsblk
-# Define devices & partitions for OS X, e.g. /disk*/
-# More stuff I can't think of ATM 09.04.17
+
+"""
+This will be a fork of the original program, ported to work with OS X
+Ideally this program will run on both platforms 
+TODO: 
+Check is we are running OS X 
+Add dependency check & requirements page 
+List devices with alternative to lsblk
+Define devices & partitions for OS X, e.g. /disk*/
+More stuff I can't think of ATM 09.04.17
+"""
 
 from __future__ import print_function 
 from builtins import input 
@@ -142,6 +145,6 @@ def wipeDevice():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print("PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
+    print("PYTHON DISK & PARTITION  WIPING UTILITY FOR UNIX-like systems.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
  
     wipeDevice()
