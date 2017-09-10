@@ -20,9 +20,9 @@ import re               # For regular expression parsing
 """ Define functions """
 
 def osCheck():
-    """ Check if OS is 'Linux' """
-    if not sys.platform.startswith('linux'):
-        print("This program was designed for Linux. Exiting.") 
+    """ Check if OS is 'UNIX-like' """
+    if not sys.platform.startswith('linux') or not sys.platform.startwith('posix'):
+        print("This program was designed for UNIX-like systems. Exiting.") 
         sys.exit()
 
 def listDevices(): 
