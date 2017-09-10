@@ -140,7 +140,7 @@ def interactiveMode():
 def wipeDevice():
     """ Program to Wipe drive """ 
     
-    #osCheck()
+    osCheck()
     interactiveMode()
     
 if __name__ == '__main__':
