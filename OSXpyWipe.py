@@ -24,7 +24,7 @@ import re               # For regular expression parsing
 
 def osCheck():
     """ Check if OS is 'UNIX-like' """
-    if not sys.platform.startswith('linux') or not sys.platform.startwith('posix'):
+    if not sys.platform.startswith('darwin' or 'linux'): 
         print("This program was designed for UNIX-like systems. Exiting.") 
         sys.exit()
 
