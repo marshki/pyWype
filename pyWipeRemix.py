@@ -22,9 +22,8 @@ def listDevices():
     
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
-    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,VENDOR...
-    # lsblk --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE'
-    # list devices but need to parse out partitions, too for SD cards, e.g. 
+    return os.system('lsblk /dev/sd* /dev/mmcblk* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') 
+    # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice(): 
     """ Prompt user to define device or partition to wipe """
