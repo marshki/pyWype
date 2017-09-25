@@ -97,7 +97,8 @@ greetings="$borderBar$(color $greetingsColor "$(center "Welcome back, $me!")")$b
 greetings="$greetings$borderBar$(color $greetingsColor "$(center "$(date +"%A, %d %B %Y, %T")")")$borderBar"
 
 # System information
-read loginFrom loginIP loginDate <<< $(last $me --time-format iso -2 | awk 'NR==2 { print $2,$3,$4 }')
+read loginFrom loginIP loginDate <<< $(last $me -tiso -2 | awk 'NR==2 { print $2,$3,$4 }')
+#read loginFrom loginIP loginDate <<< $(last $me --time-format iso -2 | awk 'NR==2 { print $2,$3,$4 }')
 
 # TTY login
 if [[ $loginDate == - ]]; then
