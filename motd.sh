@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Message of the day for Raspberry Pi
 clear
 
 function color (){
