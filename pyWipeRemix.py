@@ -58,7 +58,7 @@ def numberOfWipes():
             return wipes 
 
         except ValueError: 
-            print("Sorry, that's not a valid number. Try again.")
+            print("Sorry, that's not a valid number. Try again: ")
 
 def confirmWipe():
     """ Prompt user to confirm disk erasure """
@@ -105,16 +105,24 @@ def menu():
     
     devices = listDevices() 
     
-    while True: 
-        print(30 * "-", "MENU", 30 * "-")
-        print("1. Overwrite device or partition with 0's \n(faster, less secure).")
-        print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
-        print("3. Quit.") 
-        choice = input("Select an option (1, 2 or 3): ")
+    while True:
+        try: 
+            print(30 * "-", "MENU", 30 * "-")
+            print("1. Overwrite device or partition with 0's \n(faster, less secure).")
+            print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
+            print("3. Quit.") 
+    
+            choice = input("Select an option (1, 2 or 3): ")
 
-        if choice in ('1', '2', '3'): 
+            if choice not in ('1', '2', '3'): 
+                raise ValueError()
             return choice 
 
+        except ValueError: 
+            print("Sorry, that's not a valid number. Try again: ")
+
+
+    
 def interactiveMode(): 
     """ Display menu-driven options and run function based on selection """
 
@@ -127,7 +135,7 @@ def interactiveMode():
             zerosToDevice()
         elif choice == '2': 
             randomToDevice()   
-
+    
 def wipeDevice():
     """ Program to Wipe drive """ 
     
