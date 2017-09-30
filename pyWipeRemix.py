@@ -87,7 +87,7 @@ def zerosToDevice():
     
     for int in range(num):
         print("Processing pass count {} of {} ... ".format(int + 1, num)) 
-        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb         
 
 def randomToDevice():
     """ Write random zeros and ones to device/partition """
@@ -98,7 +98,7 @@ def randomToDevice():
     
     for int in range(num):
         print("Processing pass count {} of {} ... ".format(int + 1, num))
-        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
+        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb 
 
 def menu(): 
     """ Menu prompt for use to select program option """ 
