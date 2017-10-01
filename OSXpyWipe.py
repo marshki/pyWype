@@ -14,19 +14,13 @@ More stuff I can't think of ATM 09.04.17
 from __future__ import print_function 
 from builtins import input 
 
-from sys import platform 
-
-"""
-Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. 
-"""
+#Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. 
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
-"""
-Define functions 
-"""
+#Define functions 
 
 def osCheck():
     """ Check if OS is 'UNIX-like' """
