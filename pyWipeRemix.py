@@ -5,7 +5,7 @@
 # TODO: Add root user check 
 
 from __future__ import print_function 
-from builtins import * 
+from builtins import input  
 
 # Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT.
 import sys              # For interpreter variables & associated functions 
