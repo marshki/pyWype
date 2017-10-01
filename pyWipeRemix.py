@@ -1,4 +1,6 @@
 #!/usr/bin/env python 
+# TODO: add support for SD cards 
+# TODO: add classes for code resue 
 
 from __future__ import print_function 
 from builtins import input 
