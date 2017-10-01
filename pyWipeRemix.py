@@ -7,9 +7,7 @@
 from __future__ import print_function 
 from builtins import input 
 
-"""
-Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT.
-"""
+# Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT.
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
