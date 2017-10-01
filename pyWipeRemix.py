@@ -95,7 +95,7 @@ def zerosToDevice():
  
     append = appendDevice() 
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num)) 
@@ -106,7 +106,7 @@ def randomToDevice():
     
     append = appendDevice()    
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
@@ -115,7 +115,7 @@ def randomToDevice():
 def menu(): 
     """Menu prompt for use to select program option""" 
     
-    devices = listDevices() 
+    listDevices() 
     
     while True:
         try: 
