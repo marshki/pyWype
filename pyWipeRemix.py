@@ -1,7 +1,8 @@
 #!/usr/bin/env python3 
 # TODO: add support for SD cards 
 # TODO: add classes for code resue 
-# PEP compliance? 
+# TODO: PEP compliance? 
+# TODO: Add root user check 
 
 from __future__ import print_function 
 from builtins import input 
@@ -91,7 +92,7 @@ def zerosToDevice():
     confirm = confirmWipe()
     
     for i in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num)) 
+        print("Processing pass count {} of {} ... ".format(i + 1, num)) 
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb         
 
 def randomToDevice():
@@ -102,7 +103,7 @@ def randomToDevice():
     confirm = confirmWipe()
     
     for i in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num))
+        print("Processing pass count {} of {} ... ".format(i + 1, num))
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb 
 
 def menu(): 
