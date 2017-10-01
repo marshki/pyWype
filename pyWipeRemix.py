@@ -5,22 +5,22 @@
 from __future__ import print_function 
 from builtins import input 
 
-""" Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+"""Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT."""
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
-""" Define functions """
+"""Define functions"""
 
 def osCheck():
-    """ Check if OS is 'Linux' """
+    """Check if OS is 'Linux'"""
     if not sys.platform.startswith('linux'):
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
 def listDevices(): 
-    """ List mounted device(s) / partition(s) """
+    """List mounted device(s) / partition(s)"""
     
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
@@ -28,7 +28,7 @@ def listDevices():
     # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice(): 
-    """ Prompt user to define device or partition to wipe """
+    """Prompt user to define device or partition to wipe"""
 
     while True:
         try: 
@@ -42,14 +42,14 @@ def defineDevice():
             print("Sorry, that's not a valid device or partition. Try again.")
 
 def appendDevice(): 
-    """ Append user-defined device/partition to /dev/sd """
+    """Append user-defined device/partition to /dev/sd"""
     
     letter = defineDevice()
     
     return '/dev/sd' + letter 
 
 def numberOfWipes(): 
-    """ Prompt user for number of wipes to perform """ 
+    """Prompt user for number of wipes to perform""" 
     
     while True: 
         try:
@@ -63,7 +63,7 @@ def numberOfWipes():
             print("Sorry, that's not a valid number. Try again: ")
 
 def confirmWipe():
-    """ Prompt user to confirm disk erasure """
+    """Prompt user to confirm disk erasure"""
     
     print("WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.") 
 
@@ -81,7 +81,7 @@ def confirmWipe():
             print("Sorry, that's not a valid entry. Try again: ") 
  
 def zerosToDevice(): 
-    """ Write zeros to device/partition """
+    """Write zeros to device/partition"""
  
     append = appendDevice() 
     num = numberOfWipes()
@@ -92,7 +92,7 @@ def zerosToDevice():
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb         
 
 def randomToDevice():
-    """ Write random zeros and ones to device/partition """
+    """Write random zeros and ones to device/partition"""
     
     append = appendDevice()    
     num = numberOfWipes()
@@ -103,7 +103,7 @@ def randomToDevice():
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb 
 
 def menu(): 
-    """ Menu prompt for use to select program option """ 
+    """Menu prompt for use to select program option""" 
     
     devices = listDevices() 
     
@@ -126,7 +126,7 @@ def menu():
 
     
 def interactiveMode(): 
-    """ Display menu-driven options and run function based on selection """
+    """Display menu-driven options and run function based on selection"""
 
     while True: 
         choice = menu() 
@@ -139,7 +139,7 @@ def interactiveMode():
             randomToDevice()   
     
 def wipeDevice():
-    """ Program to Wipe drive """ 
+    """Program to Wipe drive""" 
     
     osCheck()
     interactiveMode()
