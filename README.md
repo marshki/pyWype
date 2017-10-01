@@ -1,5 +1,8 @@
 ## pyWipe
 
+[![Code Health](https://landscape.io/github/marshki/pyWipe/master/landscape.svg?style=flat)](https://landscape.io/github/marshki/pyWipe/master)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+
 A text-based Python tool to securely wipe hard drives and partitions in Linux. 
 Tested to work in Python 2.7 & 3.4. 
 
