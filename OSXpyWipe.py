@@ -30,8 +30,8 @@ Define functions
 
 def osCheck():
     """ Check if OS is 'UNIX-like' """
-    #if not ("darwin" or "linux") in platform.lower(): 
-    if not sys.platform.startswith('darwin') or not sys.platform.startswith('linux'): 
+    
+    if not "darwin" or not "linux" in platform.lower():
         print("This program was designed for UNIX-like systems. Exiting.") 
         sys.exit()
 
