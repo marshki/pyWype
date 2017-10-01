@@ -14,8 +14,6 @@ More stuff I can't think of ATM 09.04.17
 from __future__ import print_function 
 from builtins import input 
 
-from sys import platform 
-
 """
 Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. 
 """
