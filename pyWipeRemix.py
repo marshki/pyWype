@@ -1,7 +1,6 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python 
 # TODO: add support for SD cards 
 # TODO: add classes for code resue 
-# TODO: PEP compliance? 
 # TODO: Add root user check 
 
 from __future__ import print_function 
@@ -15,27 +14,22 @@ import re               # For regular expression parsing
 # Define functions
 
 def osCheck():
-    """
-    Check if OS is 'Linux'
-    """
-    if not sys.platform.startswith('linux'):
+    """Check if OS is 'Linux'"""
+
+    if 'posix' not in os.name: 
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
 def listDevices(): 
-    """
-    List mounted device(s) / partition(s)
-    """
-    
+    """List mounted device(s) / partition(s)"""
+
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
     return os.system('lsblk /dev/sd* /dev/mmcblk* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') 
     # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice(): 
-    """
-    Prompt user to define device or partition to wipe
-    """
+    """Prompt user to define device or partition to wipe"""
 
     while True:
         try: 
@@ -49,9 +43,7 @@ def defineDevice():
             print("Sorry, that's not a valid device or partition. Try again.")
 
 def appendDevice(): 
-    """
-    Append user-defined device/partition to /dev/sd
-    """
+    """Append user-defined device/partition to /dev/sd"""
     
     letter = defineDevice()
     
@@ -131,8 +123,6 @@ def menu():
 
         except ValueError: 
             print("Sorry, that's not a valid number. Try again: ")
-
-
     
 def interactiveMode(): 
     """Display menu-driven options and run function based on selection"""
@@ -155,6 +145,6 @@ def wipeDevice():
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print("PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
+    print("PYTHON DISK & PARTITION WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
  
     wipeDevice()
