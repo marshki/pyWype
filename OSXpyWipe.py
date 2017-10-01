@@ -105,7 +105,7 @@ def randomToDevice():
     
     append = appendDevice()    
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
