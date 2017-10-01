@@ -14,17 +14,24 @@ More stuff I can't think of ATM 09.04.17
 from __future__ import print_function 
 from builtins import input 
 
-""" Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+from sys import platform 
+
+"""
+Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. 
+"""
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
-""" Define functions """
+"""
+Define functions 
+"""
 
 def osCheck():
     """ Check if OS is 'UNIX-like' """
-    if not sys.platform.startswith('darwin' or 'linux'): 
+    #if not ("darwin" or "linux") in platform.lower(): 
+    if not sys.platform.startswith('darwin') or not sys.platform.startswith('linux'): 
         print("This program was designed for UNIX-like systems. Exiting.") 
         sys.exit()
 
@@ -95,8 +102,8 @@ def zerosToDevice():
     num = numberOfWipes()
     confirm = confirmWipe()
     
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num)) 
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num)) 
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
 
 def randomToDevice():
@@ -106,8 +113,8 @@ def randomToDevice():
     num = numberOfWipes()
     confirm = confirmWipe()
     
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num))
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num))
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
 
 def menu(): 
