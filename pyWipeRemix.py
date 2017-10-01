@@ -18,13 +18,17 @@ import re               # For regular expression parsing
 # Define functions
 
 def osCheck():
-    """Check if OS is 'Linux'"""
+    """
+    Check if OS is 'Linux'
+    """
     if not sys.platform.startswith('linux'):
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
 def listDevices(): 
-    """List mounted device(s) / partition(s)"""
+    """
+    List mounted device(s) / partition(s)
+    """
     
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
@@ -32,7 +36,9 @@ def listDevices():
     # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice(): 
-    """Prompt user to define device or partition to wipe"""
+    """
+    Prompt user to define device or partition to wipe
+    """
 
     while True:
         try: 
@@ -46,7 +52,9 @@ def defineDevice():
             print("Sorry, that's not a valid device or partition. Try again.")
 
 def appendDevice(): 
-    """Append user-defined device/partition to /dev/sd"""
+    """
+    Append user-defined device/partition to /dev/sd
+    """
     
     letter = defineDevice()
     
