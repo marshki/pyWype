@@ -6,6 +6,6 @@ import os
 def osCheck():
 	# Check if OS is UNIX-y 
 	if 'posix' not in os.name:		
-		print platform
+            print("Non-POSIX system detected")
 
 osCheck()
