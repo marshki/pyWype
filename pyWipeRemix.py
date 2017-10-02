@@ -99,19 +99,9 @@ def randomToDevice():
     num = numberOfWipes()
     confirmWipe()
     
-<<<<<<< HEAD
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num))
-<<<<<<< HEAD
-        os.system(('dd if=/dev/random |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
-=======
-        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
->>>>>>> e10d4f8bb072b1b0b84675dce59724fd19f18680
-=======
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb 
->>>>>>> b54bf7a53650e4c55604c1d354bb2aaeb1f99f14
 
 def menu(): 
     """Menu prompt for use to select program option""" 
