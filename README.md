@@ -1,5 +1,8 @@
 ## pyWipe
 
+[![Code Health](https://landscape.io/github/marshki/pyWipe/master/landscape.svg?style=flat)](https://landscape.io/github/marshki/pyWipe/master)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+
 A text-based Python tool to securely wipe hard drives and partitions in Linux. 
 Tested to work in Python 2.7 & 3.4. 
 
@@ -11,8 +14,9 @@ Still early in development.
 
 Open New Issues for: 
 
-- [] dd: error wiritng '/dev/sdb': No space left on device 
-- [] dd: writing to 'standard output': Broken pipe 
+- [ ] dd: error wiritng '/dev/sdb': No space left on device 
+- [ ] dd: writing to 'standard output': Broken pipe 
+- [x] mmcblk recognition using `lslk`
 
 TODO: 
 - [x] Detect attached devices 
@@ -23,8 +27,8 @@ TODO:
 - [x] Zeros to drive 
 - [x] Random to drive 
 - [x] Wipe drive
-- [ ] Quit at any time option 
-- [ ] Support multiple drive wipes 
+- [ ] Quit at any time option? 
+- [ ] Support multiple drive wipes?  
 - [ ] Unit tests and integration with [Travis CI](https://travis-ci.org/)  
 - [x] Python 2 
 - [X] Python 3
@@ -32,5 +36,4 @@ TODO:
 - [ ] Argument parsing for CLI action 
 - [ ] OS X compatibility? Can we ammend this to run in both Linux and OS X? 
 * Added OS X version with comments 
-- [ ] Investigate various wiping algorithms 
 - [ ] More stuff I can't think of ATM 

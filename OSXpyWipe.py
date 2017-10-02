@@ -12,19 +12,20 @@ More stuff I can't think of ATM 09.04.17
 """
 
 from __future__ import print_function 
-from builtins import input 
+from builtins import input  
 
-""" Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
+#Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. 
 
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
-""" Define functions """
+#Define functions 
 
 def osCheck():
     """ Check if OS is 'UNIX-like' """
-    if not sys.platform.startswith('darwin' or 'linux'): 
+    
+    if 'posix' not in os.name:
         print("This program was designed for UNIX-like systems. Exiting.") 
         sys.exit()
 
@@ -93,10 +94,10 @@ def zerosToDevice():
  
     append = appendDevice() 
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num)) 
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num)) 
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
 
 def randomToDevice():
@@ -104,16 +105,16 @@ def randomToDevice():
     
     append = appendDevice()    
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num))
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num))
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
 
 def menu(): 
     """ Menu prompt for use to select program option """ 
     
-    devices = listDevices() 
+    listDevices() 
     
     while True: 
         print(30 * "-", "MENU", 30 * "-")

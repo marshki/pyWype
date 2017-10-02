@@ -1,31 +1,35 @@
 #!/usr/bin/env python 
+# TODO: add support for SD cards 
+# TODO: add classes for code resue 
+# TODO: Add root user check 
 
 from __future__ import print_function 
-from builtins import input 
+from builtins import input  
 
-""" Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT. """
-
+# Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT.
 import sys              # For interpreter variables & associated functions 
 import os               # For operating system dependent functions 
 import re               # For regular expression parsing  
 
-""" Define functions """
+# Define functions
 
 def osCheck():
-    """ Check if OS is 'Linux' """
-    if not sys.platform.startswith('linux'):
+    """Check if OS is 'Linux'"""
+
+    if 'posix' not in os.name: 
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
 
 def listDevices(): 
-    """ List mounted device(s) / partition(s) """
-    
+    """List mounted device(s) / partition(s)"""
+
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header 
 
-    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') # lsblk -d -o NAME,MODEL,VENDOR...
+    return os.system('lsblk /dev/sd* /dev/mmcblk* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE') 
+    # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice(): 
-    """ Prompt user to define device or partition to wipe """
+    """Prompt user to define device or partition to wipe"""
 
     while True:
         try: 
@@ -39,14 +43,14 @@ def defineDevice():
             print("Sorry, that's not a valid device or partition. Try again.")
 
 def appendDevice(): 
-    """ Append user-defined device/partition to /dev/sd """
+    """Append user-defined device/partition to /dev/sd"""
     
     letter = defineDevice()
     
     return '/dev/sd' + letter 
 
 def numberOfWipes(): 
-    """ Prompt user for number of wipes to perform """ 
+    """Prompt user for number of wipes to perform""" 
     
     while True: 
         try:
@@ -57,10 +61,10 @@ def numberOfWipes():
             return wipes 
 
         except ValueError: 
-            print("Sorry, that's not a valid number. Try again.")
+            print("Sorry, that's not a valid number. Try again: ")
 
 def confirmWipe():
-    """ Prompt user to confirm disk erasure """
+    """Prompt user to confirm disk erasure"""
     
     print("WARNING!!! WRITING CHANGES TO DISK WILL RESULT IN IRRECOVERABLE DATA LOSS.") 
 
@@ -78,23 +82,24 @@ def confirmWipe():
             print("Sorry, that's not a valid entry. Try again: ") 
  
 def zerosToDevice(): 
-    """ Write zeros to device/partition """
+    """Write zeros to device/partition"""
  
     append = appendDevice() 
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
-    for int in range(num):
-        print("Processing pass count {} of {} ... ".format(int + 1, num)) 
-        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb         
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num)) 
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb         
 
 def randomToDevice():
-    """ Write random zeros and ones to device/partition """
+    """Write random zeros and ones to device/partition"""
     
     append = appendDevice()    
     num = numberOfWipes()
-    confirm = confirmWipe()
+    confirmWipe()
     
+<<<<<<< HEAD
     for int in range(num):
         print("Processing pass count {} of {} ... ".format(int + 1, num))
 <<<<<<< HEAD
@@ -102,24 +107,36 @@ def randomToDevice():
 =======
         os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=4096'.format(append))) # pv -ptrb 
 >>>>>>> e10d4f8bb072b1b0b84675dce59724fd19f18680
+=======
+    for i in range(num):
+        print("Processing pass count {} of {} ... ".format(i + 1, num))
+        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb 
+>>>>>>> b54bf7a53650e4c55604c1d354bb2aaeb1f99f14
 
 def menu(): 
-    """ Menu prompt for use to select program option """ 
+    """Menu prompt for use to select program option""" 
     
-    devices = listDevices() 
+    listDevices() 
     
-    while True: 
-        print(30 * "-", "MENU", 30 * "-")
-        print("1. Overwrite device or partition with 0's \n(faster, less secure).")
-        print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
-        print("3. Quit.") 
-        choice = input("Select an option (1, 2 or 3): ")
+    while True:
+        try: 
+            print(30 * "-", "MENU", 30 * "-")
+            print("1. Overwrite device or partition with 0's \n(faster, less secure).")
+            print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
+            print("3. Quit.") 
+    
+            choice = input("Select an option (1, 2 or 3): ")
 
-        if choice in ('1', '2', '3'): 
+            if choice not in ('1', '2', '3'): 
+                raise ValueError()
             return choice 
 
+        except ValueError: 
+            print("Sorry, that's not a valid number. Try again: ")
+    
 def interactiveMode(): 
-    """ Display menu-driven options and run function based on selection """
+    """Display menu-driven options and run function based on selection"""
+
     while True: 
         choice = menu() 
 
@@ -129,15 +146,15 @@ def interactiveMode():
             zerosToDevice()
         elif choice == '2': 
             randomToDevice()   
-
+    
 def wipeDevice():
-    """ Program to Wipe drive """ 
+    """Program to Wipe drive""" 
     
     osCheck()
     interactiveMode()
     
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print("PYTHON DISK & PARTITION  WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
+    print("PYTHON DISK & PARTITION WIPING UTILITY FOR LINUX.\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.") 
  
     wipeDevice()

@@ -1,10 +1,10 @@
 #!/bin/py 
+# check if POSIX
 
-from sys import platform 
+import os 
 
 def osCheck():
-	# Check if OS is UNIX-y 
-	if "darwin" or "linux" in platform.lower():  
-		print platform
+    if 'posix' not in os.name:		
+        print("Non-POSIX system detected")
 
 osCheck()
