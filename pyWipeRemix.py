@@ -1,7 +1,6 @@
 #!/usr/bin/env python 
 # TODO: add support for SD cards 
 # TODO: add classes for code resue 
-# TODO: Add root user check 
 
 from __future__ import print_function 
 from builtins import input  

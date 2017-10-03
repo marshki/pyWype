@@ -29,6 +29,7 @@ TODO:
 - [x] Wipe drive
 - [ ] Quit at any time option? 
 - [ ] Support multiple drive wipes?  
+- [ ] Add SD card support
 - [ ] Unit tests and integration with [Travis CI](https://travis-ci.org/)  
 - [x] Python 2 
 - [X] Python 3
@@ -36,4 +37,3 @@ TODO:
 - [ ] Argument parsing for CLI action 
 - [ ] OS X compatibility? Can we ammend this to run in both Linux and OS X? 
 * Added OS X version with comments 
-- [ ] More stuff I can't think of ATM 
