@@ -14,11 +14,18 @@ import re               # For regular expression parsing
 # Define functions
 
 def osCheck():
-    """Check if OS is 'Linux'"""
+    """Check if OS is 'POSIX'"""
 
     if 'posix' not in os.name: 
         print("This program was designed for Linux. Exiting.") 
         sys.exit()
+
+def userCheck(): 
+    """Check is user has UID 0"""
+
+    if not os.getuid() == 0:
+	print("This program requires ROOT privileges. Exiting.")
+	sys.exit() 
 
 def listDevices(): 
     """List mounted device(s) / partition(s)"""
@@ -141,6 +148,7 @@ def wipeDevice():
     """Program to Wipe drive""" 
     
     osCheck()
+    userCheck()
     interactiveMode()
     
 if __name__ == '__main__':
