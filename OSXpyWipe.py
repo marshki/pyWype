@@ -32,8 +32,8 @@ def userCheck():
     """Check is user has UID 0"""
 
     if not os.getuid() == 0:
-	print("This program requires ROOT privileges. Exiting.")
-	sys.exit()
+        print("This program requires ROOT privileges. Exiting.")
+        sys.exit()
 
 def listDevices():
     """ List mounted device(s) / partition(s) """
