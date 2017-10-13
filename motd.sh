@@ -1,140 +1,36 @@
 #!/bin/bash
-#Message of the day for Raspberry Pi
-clear
 
-function color (){
-  echo "\e[$1m$2\e[0m"
-}
+let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+let secs=$((${upSeconds}%60))
+let mins=$((${upSeconds}/60%60))
+let hours=$((${upSeconds}/3600%24))
+let days=$((${upSeconds}/86400))
+UPTIME=`printf "%d days, %02dh%02dm%02ds" "$days" "$hours" "$mins" "$secs"`
 
-function extend (){
-  local str="$1"
-  let spaces=60-${#1}
-  while [ $spaces -gt 0 ]; do
-    str="$str "
-    let spaces=spaces-1
-  done
-  echo "$str"
-}
+MEMFREE=`cat /proc/meminfo | grep MemFree | awk {'print $2'}`
+MEMTOTAL=`cat /proc/meminfo | grep MemTotal | awk {'print $2'}`
 
-function center (){
-  local str="$1"
-  let spacesLeft=(78-${#1})/2
-  let spacesRight=78-spacesLeft-${#1}
-  while [ $spacesLeft -gt 0 ]; do
-    str=" $str"
-    let spacesLeft=spacesLeft-1
-  done
-  
-  while [ $spacesRight -gt 0 ]; do
-    str="$str "
-    let spacesRight=spacesRight-1
-  done
-  
-  echo "$str"
-}
+SDUSED=`df -h | grep 'dev/root' | awk '{print $3}'  | xargs`
+SDAVAIL=`df -h | grep 'dev/root' | awk '{print $4}'  | xargs`
 
-function sec2time (){
-  local input=$1
-  
-  if [ $input -lt 60 ]; then
-    echo "$input seconds"
-  else
-    ((days=input/86400))
-    ((input=input%86400))
-    ((hours=input/3600))
-    ((input=input%3600))
-    ((mins=input/60))
-    
-    local daysPlural="s"
-    local hoursPlural="s"
-    local minsPlural="s"
-    
-    if [ $days -eq 1 ]; then
-      daysPlural=""
-    fi
-    
-    if [ $hours -eq 1 ]; then
-      hoursPlural=""
-    fi
-    
-    if [ $mins -eq 1 ]; then
-      minsPlural=""
-    fi
-    
-    echo "$days day$daysPlural, $hours hour$hoursPlural, $mins minute$minsPlural"
-  fi
-}
+# get the load averages
+read one five fifteen rest < /proc/loadavg
 
-borderColor=39
-headerLeafColor=39
-headerRaspberryColor=39
-greetingsColor=39
-statsLabelColor=39
+DARKGREY="$(tput sgr0 ; tput bold ; tput setaf 0)"
+RED="$(tput sgr0 ; tput setaf 1)"
+GREEN="$(tput sgr0 ; tput setaf 2)"
+BLUE="$(tput sgr0 ; tput setaf 4)"
+NC="$(tput sgr0)" # No Color
 
-borderLine="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-borderTopLine=$(color $borderColor "┏$borderLine┓")
-borderBottomLine=$(color $borderColor "┗$borderLine┛")
-borderBar=$(color $borderColor "┃")
-borderEmptyLine="$borderBar                                                                              $borderBar"
-
-# Header
-header="$borderTopLine\n$borderEmptyLine\n"
-header="$header$borderBar$(color $headerLeafColor "          .~~.   .~~.                                                         ")$borderBar\n"
-header="$header$borderBar$(color $headerLeafColor "         '. \ ' ' / .'                                                        ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "          .~ .~~~..~.                      _                          _       ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "         : .~.'~'.~. :     ___ ___ ___ ___| |_ ___ ___ ___ _ _    ___|_|      ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "        ~ (   ) (   ) ~   |  _| .'|_ -| . | . | -_|  _|  _| | |  | . | |      ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "       ( : '~'.~.'~' : )  |_| |__,|___|  _|___|___|_| |_| |_  |  |  _|_|      ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "        ~ .~ (   ) ~. ~               |_|                 |___|  |_|          ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "         (  : '~' :  )                                                        ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "          '~ .~~~. ~'                                                         ")$borderBar\n"
-header="$header$borderBar$(color $headerRaspberryColor "              '~'                                                             ")$borderBar"
-
-me=$(whoami)
-
-# Greetings
-greetings="$borderBar$(color $greetingsColor "$(center "Welcome back, $me!")")$borderBar\n"
-greetings="$greetings$borderBar$(color $greetingsColor "$(center "$(date +"%A, %d %B %Y, %T")")")$borderBar"
-
-# System information
-read loginFrom loginIP loginDate <<< $(last $me -tiso -2 | awk 'NR==2 { print $2,$3,$4 }')
-#read loginFrom loginIP loginDate <<< $(last $me --time-format iso -2 | awk 'NR==2 { print $2,$3,$4 }')
-# last -n 10 -a -d
-
-# TTY login
-if [[ $loginDate == - ]]; then
-  loginDate=$loginIP
-  loginIP=$loginFrom
-fi
-
-if [[ $loginDate == *T* ]]; then
-  login="$(date -d $loginDate +"%A, %d %B %Y, %T") ($loginIP)"
-else
-  # Not enough logins
-  login="None"
-fi
-
-label1="$(extend "$login")"
-label1="$borderBar  $(color $statsLabelColor "Last Login....:") $label1$borderBar"
-
-uptime="$(sec2time $(cut -d "." -f 1 /proc/uptime))"
-uptime="$uptime ($(date -d "@"$(grep btime /proc/stat | cut -d " " -f 2) +"%d-%m-%Y %H:%M:%S"))"
-
-label2="$(extend "$uptime")"
-label2="$borderBar  $(color $statsLabelColor "Uptime........:") $label2$borderBar"
-
-label3="$(extend "$(free -m | awk 'NR==2 { printf "Total: %sMB, Used: %sMB, Free: %sMB",$2,$3,$4; }')")"
-label3="$borderBar  $(color $statsLabelColor "Memory........:") $label3$borderBar"
-
-label4="$(extend "$(df -h ~ | awk 'NR==2 { printf "Total: %sB, Used: %sB, Free: %sB",$2,$3,$4; }')")"
-label4="$borderBar  $(color $statsLabelColor "Home space....:") $label4$borderBar"
-
-label5="$(extend "$(/opt/vc/bin/vcgencmd measure_temp | cut -c "6-9")ºC")"
-label5="$borderBar  $(color $statsLabelColor "Temperature...:") $label5$borderBar"
-
-stats="$label1\n$label2\n$label3\n$label4\n$label5"
-
-# Print motd
-echo -e "$header\n$borderEmptyLine\n$greetings\n$borderEmptyLine\n$stats\n$borderEmptyLine\n$borderBottomLine"       
-
-
+echo "${GREEN}
+   .~~.   .~~.    `hostname -f`
+  '. \ ' ' / .'   `date +"%A, %e %B %Y, %r"`${RED}
+   .~ .~~~..~.
+  : .~.'~'.~. :   ${DARKGREY}Uptime.............: ${BLUE}${UPTIME}${RED}
+ ~ (   ) (   ) ~  ${DARKGREY}Memory.............: ${BLUE}${MEMFREE}kB (Free) / ${MEMTOTAL}kB (Total)${RED}
+( : '~'.~.'~' : ) ${DARKGREY}Disk usage.........: ${BLUE}${SDUSED} (Used) / ${SDAVAIL} (Free)${RED}
+ ~ .~ (   ) ~. ~  ${DARKGREY}Load Averages......: ${BLUE}${one}, ${five}, ${fifteen} (1, 5, 15 min)${RED}
+  (  : '~' :  )   ${DARKGREY}Running Processes..: ${BLUE}`ps ax | wc -l | tr -d " "`${RED}
+   '~ .~~~. ~'    ${DARKGREY}IP Addresses.......: ${BLUE}`hostname -I`${RED}
+       '~'
+${NC}"
