@@ -39,13 +39,14 @@ DARKGREY="$(tput sgr0 ; tput bold ; tput setaf 0)"
 RED="$(tput sgr0 ; tput setaf 1)"
 GREEN="$(tput sgr0 ; tput setaf 2)"
 BLUE="$(tput sgr0 ; tput setaf 4)"
+BLACK="$(tput sgr0 ; tput setaf 7)"
 NC="$(tput sgr0)" # No Color
 
 # ASCII ART 
 
-echo "${GREEN}
+echo "${DARKGREY}
    .~~.   .~~.    `hostname -f`
-  '. \ ' ' / .'   `date +"%A, %e %B %Y, %r"`${RED}
+  '. \ ' ' / .'   `date +"%A, %e %B %Y, %r"`${DARKGREY}
    .~ .~~~..~.
   : .~.'~'.~. :   ${DARKGREY}Uptime.............: ${BLUE}${UPTIME}${RED}
  ~ (   ) (   ) ~  ${DARKGREY}Memory.............: ${BLUE}${MEMFREE}kB (Free) / ${MEMTOTAL}kB (Total)${RED}
