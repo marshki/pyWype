@@ -25,6 +25,15 @@ SDAVAIL=`df -h | grep 'dev/root' | awk '{print $4}'  | xargs`
 read one five fifteen rest < /proc/loadavg
 
 # Define GUI Palette
+# Need to change the color scheme using tput code: 
+# 0 – Black.
+# 1 – Red.
+# 2 – Green.
+# 3 – Yellow.
+# 4 – Blue.
+# 5 – Magenta.
+# 6 – Cyan.
+# 7 – White. 
 
 DARKGREY="$(tput sgr0 ; tput bold ; tput setaf 0)"
 RED="$(tput sgr0 ; tput setaf 1)"
