@@ -14,6 +14,7 @@ In Linux, you'll need to install pv_
 .. _pv: http://www.ivarch.com/programs/pv.shtml 
 
 per your package manager: 
+
 +------------------+--------------+
 |apt               |yum           |
 +==================+==============+
