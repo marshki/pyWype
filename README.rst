@@ -19,12 +19,22 @@ In Linux, install pv_ via your package manager:
 |apt-get install -y|dnf install -y|
 |pv 	           |pv            |
 +------------------+--------------+   
-. 
 
 In Python, do: 
 :: 
     pip install -r requirements.txt 
-. 
 
 Usage
 -----
+
+TODO
+----
+
+Change Log 
+----------
+
+LICENSE
+-------
+LICENSE_
+
+.. -LICENSE: https://github.com/marshki/pyWype/blob/master/LICENSE
