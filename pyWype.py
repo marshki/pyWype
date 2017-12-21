@@ -53,7 +53,7 @@ def appendDevice():
 
     letter = defineDevice()
 
-    return '/dev/sd' + letter
+    return '/dev/sd' + letter, '/dev/mmcblk' + letter
 
 def numberOfWipes():
     """Prompt user for number of wipes to perform"""
