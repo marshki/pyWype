@@ -20,7 +20,7 @@ In Linux, install pv_ via your package manager:
 |pv 	           |pv            |
 +------------------+--------------+   
 
-In Python, do: 
+Install Python requirements: 
 :: 
     pip install -r requirements.txt 
 
