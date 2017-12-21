@@ -32,6 +32,14 @@ Usage
 
 TODO
 ----
+- [ ] Add quit at any time option 
+- [ ] Support multiple drive wipes? 
+- [ ] SD card support 
+- [ ] Unit tests & integration with Travis CI_
+
+.. _Travis CI: https://travis-ci.com
+
+
 
 Change Log 
 ----------
