@@ -1,6 +1,8 @@
 ======
 pyWype
 ======
+.. image:: https://api.codacy.com/project/badge/Grade/78a1649abd3144369e66326394211ea3
+  :target: https://www.codacy.com/app/marshki/pyWype?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marshki/pyWype&amp;utm_campaign=Badge_Grade
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
   :target: https://opensource.org/licenses/MIT
 
