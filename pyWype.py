@@ -1,5 +1,8 @@
-from __future__ import print_function
-from builtins import input
+# from __future__ import print_function
+import future
+import builtins
+
+#from builtins import input
 
 #!/usr/bin/env python
 
