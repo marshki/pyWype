@@ -1,16 +1,11 @@
-#!/usr/bin/env python
-# TODO: add support for SD cards
-# TODO: add classes for code resue
-
 from __future__ import print_function
 from builtins import input
 
-# Python 2.7 & 3.4 disk wiping utility for use on Linux operating systems. RUN AS ROOT.
+#!/usr/bin/env PYTHON
+
 import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
 import re               # For regular expression parsing
-
-# Define functions
 
 def osCheck():
     """Check if OS is 'POSIX'"""
@@ -53,7 +48,7 @@ def appendDevice():
 
     letter = defineDevice()
 
-    return '/dev/sd' + letter, '/dev/mmcblk' + letter
+    return '/dev/sd' + letter
 
 def numberOfWipes():
     """Prompt user for number of wipes to perform"""
