@@ -1,7 +1,7 @@
 from __future__ import print_function
 from builtins import input
 
-#!/usr/bin/env PYTHON
+#!/usr/bin/env python
 
 import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
@@ -24,9 +24,9 @@ def userCheck():
 def listDevices():
     """List mounted device(s) / partition(s)"""
 
-    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                                      # Header
+    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                           # Header
 
-    return os.system('lsblk /dev/sd* /dev/mmcblk* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE')
+    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE')
     # lsblk -d -o NAME,MODEL,VENDOR...
 
 def defineDevice():
