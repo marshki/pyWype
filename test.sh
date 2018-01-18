@@ -4,6 +4,4 @@ printf "%s\n" "FQDN: $(hostname -f)"
 
 printf "%s\n" "DATE: $(date +%_A-%_d-%B-%Y) TIME: $(date +%R)" 
 
-# $(+DATE: %Y-%m-%d% TIME: %H:%M:%S)"
-
-uptime
+printf "%s\n" "UPTIME: $(uptime | awk '{print $3, $4, $5}')" 
