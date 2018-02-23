@@ -11,7 +11,12 @@ if [ "$OSTYPE" == "linux-gnueabihf" ]; then
 else [ "$OSTYPE" == "darwin"* ];
 	printf "%s\n" "MEMORY: $(top -l 1 -s 0 | grep PhysMem)"
 fi
-#printf "%s\n" "DISK USAGE: $()"
+
+printf "%s\n" "DISK USAGE: $()"
+
+# $DISK_USED=df -h | grep 'dev/root' | awk '{print $3}'  | xargs 
+# $DISK_FREE=df -h | grep 'dev/root' | awk '{print $3}'  | xargs 
+
 
 #rintf "%s\n" "LOAD AVERAGES: $()"
 
