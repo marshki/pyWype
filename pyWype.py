@@ -15,7 +15,7 @@ def posix_os_check():
         sys.exit()
 
 def root_user_check():
-    """Check is user has UID 0"""
+    """Check is current user has UID 0"""
 
     if not os.getuid() == 0:
 	print("This program requires ROOT privileges. Exiting.")
@@ -82,7 +82,7 @@ def confirm_wipe():
         except ValueError:
             print("Sorry, that's not a valid entry. Try again: ")
 
-def zeros_to_device():
+def write_zeros_to_device():
     """Write zeros to device/partition"""
 
     append = append_device_to_wipe()
@@ -93,7 +93,7 @@ def zeros_to_device():
         print("Processing pass count {} of {} ... ".format(i + 1, num))
         os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append))) # pv -ptrb
 
-def random_to_device():
+def write_random_to_device():
     """Write random zeros and ones to device/partition"""
 
     append = append_device_to_wipe()
@@ -134,9 +134,9 @@ def interactive_mode():
         if choice == '3':
             sys.exit()
         elif choice == '1':
-            zeros_to_device()
+            write_zeros_to_device()
         elif choice == '2':
-            random_to_device()
+            write_random_to_device()
 
 def wipe_device():
     """Program to Wipe drive"""
