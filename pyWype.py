@@ -85,9 +85,9 @@ def confirm_wipe():
 def zeros_to_device():
     """Write zeros to device/partition"""
 
-    append = appendDevice()
-    num = numberOfWipes()
-    confirmWipe()
+    append = append_device_to_wipe()
+    num = number_of_wipes()
+    confirm_wipe()
 
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
@@ -96,9 +96,9 @@ def zeros_to_device():
 def random_to_device():
     """Write random zeros and ones to device/partition"""
 
-    append = appendDevice()
-    num = numberOfWipes()
-    confirmWipe()
+    append = append_device_to_wipe()
+    num = number_of_wipes()
+    confirm_wipe()
 
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
@@ -107,7 +107,7 @@ def random_to_device():
 def menu():
     """Menu prompt for use to select program option"""
 
-    listDevices()
+    list_mounted_devices()
 
     while True:
         try:
