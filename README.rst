@@ -50,3 +50,8 @@ LICENSE
 LICENSE_
 
 .. -LICENSE: https://github.com/marshki/pyWype/blob/master/LICENSE
+
+
+.. image:: https://api.codacy.com/project/badge/Grade/5a4468e8440d488281592c213068cda7
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/marshki/pyWype?utm_source=github.com&utm_medium=referral&utm_content=marshki/pyWype&utm_campaign=badger
