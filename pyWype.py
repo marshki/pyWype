@@ -1,7 +1,7 @@
+#!/usr/bin/env python
+
 from __future__ import print_function
 from builtins import *
-
-#!/usr/bin/env python
 
 import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
