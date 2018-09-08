@@ -7,9 +7,9 @@ import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
 import re               # For regular expression parsing
 
-# TODO: 
-# Refactor using classes? 
-# GUI
+#TODO: 
+#Refactor using classes? 
+#GUI
 
 
 def posix_os_check():
