@@ -5,6 +5,7 @@ from builtins import *
 
 import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
+import stat
 import re               # For regular expression parsing
 
 #TODO: 
@@ -27,12 +28,16 @@ def root_user_check():
 	sys.exit()
 
 def list_mounted_devices():
-    """List mounted device(s) / partition(s)"""
+    SEARCH_PATH = '/dev/'
 
-    print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")                           # Header
+    devices = os.listdir(SEARCH_PATH)
+    partitions = [device for device in devices if device.startswith('sd')]
 
-    return os.system('lsblk /dev/sd* --nodeps --output NAME,MODEL,VENDOR,SIZE,TYPE,STATE')
-    # lsblk -d -o NAME,MODEL,VENDOR...
+    for partition in sorted(partitions):
+        full_path = os.path.join(SEARCH_PATH, partition)
+        mode = os.stat(full_path).st_mode
+        if stat.S_ISBLK(mode) and os.access(full_path, os.W_OK):
+            print(partition)
 
 def define_device_to_wipe():
     """Prompt user to define device or partition to wipe"""
