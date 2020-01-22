@@ -1,16 +1,11 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from builtins import *
+from builtins import int
 
-import sys              # For interpreter variables & associated functions
-import os               # For operating system dependent functions
-import re               # For regular expression parsing
-
-#TODO:
-#Refactor using classes?
-#GUI
-
+import sys
+import os
+import re
 
 def posix_os_check():
     """Check if OS is 'POSIX'"""
@@ -39,7 +34,8 @@ def define_device_to_wipe():
 
     while True:
         try:
-            device = str(input("Enter letter [number] of device/partition to wipe,\ne.g. to wipe '/dev/sdb1' enter 'b1': "))
+            device = str(input("Enter letter [number] of device/partition to wipe,",
+                               "e.g. to wipe '/dev/sdb1' enter 'b1': "))
 
             if not re.match("^[a-z][0-9]?$", device):
                 raise ValueError()
