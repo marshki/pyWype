@@ -7,8 +7,8 @@ import sys              # For interpreter variables & associated functions
 import os               # For operating system dependent functions
 import re               # For regular expression parsing
 
-#TODO: 
-#Refactor using classes? 
+#TODO:
+#Refactor using classes?
 #GUI
 
 
@@ -23,8 +23,8 @@ def root_user_check():
     """Check is current user has UID 0"""
 
     if not os.getuid() == 0:
-	print("This program requires ROOT privileges. Exiting.")
-	sys.exit()
+        print("This program requires ROOT privileges. Exiting.")
+        sys.exit()
 
 def list_mounted_devices():
     """List mounted device(s) / partition(s)"""
