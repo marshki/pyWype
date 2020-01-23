@@ -1,7 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from __future__ import print_function
-from builtins import int
+
+try: 
+    import builtins
+except ImportError:
+    import __builtin__ as builtins
 
 import sys
 import os
@@ -34,9 +38,8 @@ def define_device_to_wipe():
 
     while True:
         try:
-            device = str(input("Enter letter [number] of device/partition to wipe,",
-                               "e.g. to wipe '/dev/sdb1' enter 'b1': "))
-
+            device = str(input("Enter letter [number] of device/partition to wipe,\ne.g. to wipe '/dev/sdb1' enter 'b1': "))
+                              
             if not re.match("^[a-z][0-9]?$", device):
                 raise ValueError()
             return device
