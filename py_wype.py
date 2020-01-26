@@ -10,6 +10,7 @@ try:
 except ImportError:
     import __builtin__ as builtins
 
+from builtins import input
 import sys
 import os
 import re
