@@ -10,7 +10,11 @@ try:
 except ImportError:
     import __builtin__ as builtins
 
-from builtins import input
+try:
+    input = raw_input
+except NameError:
+    pass
+
 import sys
 import os
 import re
