@@ -109,7 +109,8 @@ def write_zeros_to_device():
 
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
-        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes| dd of={} bs=1024'.format(append)))
+        os.system(('dd if=/dev/zero |pv --progress --time --rate --bytes|'
+                   'dd of={} bs=1024'.format(append)))
 
 def write_random_to_device():
     """Write random zeros and ones to device/partition.
@@ -121,7 +122,8 @@ def write_random_to_device():
 
     for i in range(num):
         print("Processing pass count {} of {} ... ".format(i + 1, num))
-        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes | dd of={} bs=1024'.format(append)))
+        os.system(('dd if=/dev/urandom |pv --progress --time --rate --bytes|'
+                   'dd of={} bs=1024'.format(append)))
 
 def menu():
     """Menu prompt for use to select program option.
@@ -133,7 +135,8 @@ def menu():
         try:
             print(30 * "-", "MENU", 30 * "-")
             print("1. Overwrite device or partition with 0's \n(faster, less secure).")
-            print("2. Overwrite device or partition with random 0\'s & 1\'s \n(slower, more secure).")
+            print("2. Overwrite device or partition with random 0\'s & 1\'s"
+                  "\n(slower, more secure).")
             print("3. Quit.")
 
             choice = input("Select an option (1, 2 or 3): ")
