@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-"""Disk-wiping utility.
+"""Disk/partiion wiping utility for Python 2 & 3.
 """
+
 from __future__ import print_function
 
 import sys
@@ -12,7 +13,6 @@ try:
     input = raw_input
 except NameError:
     pass
-
 
 def posix_os_check():
     """Check if OS is 'POSIX'.
