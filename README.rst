@@ -4,16 +4,24 @@ pyWype
 .. image:: https://api.codacy.com/project/badge/Grade/78a1649abd3144369e66326394211ea3    
   :target: https://www.codacy.com/app/marshki/pyWype?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marshki/pyWype&amp;utm_campaign=Badge_Grade
 
-.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
-  :target: https://opensource.org/licenses/MIT
+.. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
+   :target: https://www.python.org/
 
-Python utility to securely wipe storage drives and partitions in Linux.
+.. image:: https://img.shields.io/badge/License-MIT-blue.svg
+   :target: https://lbesson.mit-license.org/
+
+.. image:: https://badges.frapsoft.com/os/v3/open-source.svg?v=103
+   :target: https://github.com/ellerbrock/open-source-badges
+
+Securely wipe storage drives and partitions 
 -----------------------------------------------------------------------------
-** THIS SOFTWARE WILL IRRECOVERABLY WIPE DATA FROM YOUR DRIVE. USE CAUTION **
+Disk-wiping utility for GNU/Linux, written in Python 2 & 3. 
+
+**THIS SOFTWARE WILL IRRECOVERABLY WIPE DATA FROM YOUR DRIVE. USE CAUTION.**
 
 Requirements
 ------------
-pyWype is tested to run in Python 2.7 and Python 3.4 on Linux.
+pyWype is tested to run in Python 2.7 and Python 3.4 on GNU/Linux. 
 
 In Linux, install pv_ via your package manager:
 
