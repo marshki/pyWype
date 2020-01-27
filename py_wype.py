@@ -2,8 +2,11 @@
 
 """Disk-wiping utility.
 """
-
 from __future__ import print_function
+
+import sys
+import os
+import re
 
 try:
     import builtins
@@ -15,9 +18,6 @@ try:
 except NameError:
     pass
 
-import sys
-import os
-import re
 
 def posix_os_check():
     """Check if OS is 'POSIX'.
@@ -31,7 +31,7 @@ def root_user_check():
     """Check is current user has UID 0.
     """
 
-    if not os.getuid() == 0:
+    if os.getuid() != 0:
         print("This program requires ROOT privileges. Exiting.")
         sys.exit()
 
