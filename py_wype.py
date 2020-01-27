@@ -9,11 +9,6 @@ import os
 import re
 
 try:
-    import builtins
-except ImportError:
-    import __builtin__ as builtins
-
-try:
     input = raw_input
 except NameError:
     pass
