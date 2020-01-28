@@ -170,7 +170,7 @@ def wipe_device():
 
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
-    print("PYTHON DISK & PARTITION WIPING UTILITY FOR LINUX."
+    print("PYTHON DISK & PARTITION WIPING UTILITY FOR GNU/LINUX."
           "\nTHIS UTILITY WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.")
 
     wipe_device()
