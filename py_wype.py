@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Disk/partiion wiping utility for Python 2 & 3.
+"""Disk-wiping utility for GNU/Linux, written in Python 2 & 3.
 """
 
 from __future__ import print_function
@@ -19,7 +19,7 @@ def posix_os_check():
     """
 
     if 'posix' not in os.name:
-        print("This program was designed for Linux. Exiting.")
+        print("This program was designed for GNU/Linux. Exiting.")
         sys.exit()
 
 def root_user_check():
@@ -87,7 +87,7 @@ def confirm_wipe():
 
     while True:
         try:
-            reply = str(input("Are you sure you want to proceed? (Yes/No): ")).lower().strip()
+            reply = str(input("Do you want to proceed? (Yes/No): ")).lower().strip()
 
             if reply == 'yes':
                 return True
@@ -173,6 +173,6 @@ def wipe_device():
 if __name__ == '__main__':
     print(28 * '-', " pyWype ", 28 * '-')
     print("PYTHON DISK & PARTITION WIPING UTILITY FOR LINUX."
-          "\nTHIS WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.")
+          "\nTHIS UTILITY WILL IRRECOVERABLY WIPE DATA FROM DRIVE.\nPROCEED WITH CAUTION.")
 
     wipe_device()
