@@ -15,7 +15,7 @@ except NameError:
     pass
 
 def posix_os_check():
-    """Check if OS is 'POSIX'.
+    """Check if OS is 'posix'
     """
 
     if 'posix' not in os.name:
@@ -23,7 +23,7 @@ def posix_os_check():
         sys.exit()
 
 def root_user_check():
-    """Check is current user has UID 0.
+    """Check if current UID is 0.
     """
 
     if os.getuid() != 0:
@@ -32,7 +32,6 @@ def root_user_check():
 
 def list_mounted_devices():
     """List mounted device(s) / partition(s).
-    lsblk -d -o NAME.MODEL,VENDOR...
     """
 
     print(22 * "-", "DEVICES & PARTITIONS", 22 * "-")
@@ -100,7 +99,6 @@ def confirm_wipe():
 
 def write_zeros_to_device():
     """Write zeros to device/partition.
-    pv -ptrb
     """
 
     append = append_device_to_wipe()
