@@ -1,6 +1,9 @@
 import platform
 import sys
 
+"""Placeholder.
+"""
+
 def is_linux():
     """Check if system is 'Linux'
     """
