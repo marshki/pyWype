@@ -1,6 +1,9 @@
 import os
 import sys
 
+"""Placeholder.
+"""
+
 def user_is_root():
     """Check if current UID is 0.
     """
