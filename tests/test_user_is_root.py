@@ -1,8 +1,11 @@
-import os
-import sys
+#!/usr/bin/env python3
 
 """Placeholder.
 """
+
+import os
+import sys
+
 
 def user_is_root():
     """Check if current UID is 0.
