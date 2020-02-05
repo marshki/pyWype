@@ -24,7 +24,7 @@ class CheckOS(unittest.TestCase):
         """Placeholder.
         """
         self.assertEqual(is_linux(), 'Darwin')
-        
+
 
 if __name__ == '__main__':
     unittest.main()
