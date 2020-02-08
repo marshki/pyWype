@@ -44,9 +44,9 @@ def define_device_to_wipe():
 
     while True:
         try:
-            device = str(input(
+            device = input(
                 "Enter letter [number] of device/partition to wipe,"
-                "\ne.g. to wipe '/dev/sdb1' enter 'b1': "))
+                "\ne.g. to wipe '/dev/sdb1' enter 'b1': ")
 
             if not re.match("^[a-z][0-9]?$", device):
                 raise ValueError()
@@ -86,7 +86,7 @@ def confirm_wipe():
 
     while True:
         try:
-            reply = str(input("Do you want to proceed? (Yes/No): ")).lower().strip()
+            reply = input("Do you want to proceed? (Yes/No): ").lower().strip()
 
             if reply == 'yes':
                 return True
