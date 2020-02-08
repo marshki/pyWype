@@ -6,6 +6,7 @@
 from __future__ import print_function
 
 import os
+import platform
 import re
 import sys
 
@@ -14,11 +15,11 @@ try:
 except NameError:
     pass
 
-def posix_os_check():
-    """Check if OS is 'posix'
+def is_linux():
+    """Check if system is 'Linux'
     """
 
-    if 'posix' not in os.name:
+    if 'Linux' not platform.system():
         print("This program was designed for GNU/Linux. Exiting.")
         sys.exit()
 
