@@ -19,7 +19,7 @@ def is_linux():
     """Check if system is 'Linux'
     """
 
-    if 'Linux' not platform.system():
+    if 'Linux' not in platform.system():
         print("This program was designed for GNU/Linux. Exiting.")
         sys.exit()
 
@@ -165,7 +165,7 @@ def wipe_device():
     """Program to wipe drive.
     """
 
-    posix_os_check()
+    is_linux()
     root_user_check()
     interactive_mode()
 
