@@ -17,9 +17,9 @@ def get_valid_user_input():
 
             if not re.match("^[a-z][0-9]?$", device):
                 raise ValueError()
-            print(type(device))
             return device
 
         except ValueError:
             print("Sorry, that's not a valid device or partition. Try again.")
 
+get_valid_user_input()
