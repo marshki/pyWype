@@ -11,4 +11,7 @@ This document records all notable changes to pyWype.
 - Refactor 
 - Add support for SD cards
 
+**0.3 (06.24.2021)**
+
+- refactored into an installable package
 
