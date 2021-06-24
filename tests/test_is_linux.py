@@ -8,6 +8,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
+
 def is_linux():
     """Check if system is 'Linux'
     """
@@ -15,6 +16,9 @@ def is_linux():
         print("This program was designed for GNU/Linux. Exiting.")
         sys.exit()
 """
+
+
+
 class CheckOS(unittest.TestCase):
     #Unit test.
 
